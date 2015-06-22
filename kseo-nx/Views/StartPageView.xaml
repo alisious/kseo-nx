@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="kseo_nx.Views.StartPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1800">
+    <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1">
+            <Button x:Name="CheckPerson"  Height="60">Sprawdzenia</Button>
+            <Button Height="60">Zabezpieczenia</Button>
+            <Button Height="60">Współpraca</Button>
+            <Button Height="60">Procedury</Button>
+        </StackPanel>
+    </Grid>
+    
+</UserControl>

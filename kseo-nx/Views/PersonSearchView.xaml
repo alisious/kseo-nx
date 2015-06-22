@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="kseo_nx.Views.PersonSearchView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1600">
+    <Grid>
+          <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="100*"/>
+              <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="500*"/>
+            </Grid.ColumnDefinitions>  
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal"  Grid.Column="1" Grid.Row="0">
+            <StackPanel Width="250">
+            <Label>PESEL:</Label>
+                <Label>Nazwisko:</Label>
+                <Label>Imię:</Label>
+                <Label>Imię ojca:</Label>
+                <Label>Data urodzenia:</Label>
+            </StackPanel>
+        <StackPanel Width="250" >
+                <TextBox Name="Pesel" Margin="2"/>
+                <TextBox Name="Nazwisko" Margin="2"/>
+                <TextBox Name="Imie" Margin="2"/>
+                <TextBox Name="ImieOjca" Margin="2"/>
+                <TextBox Name="DataUrodzenia" Margin="2"/>
+            </StackPanel>
+        </StackPanel>
+        <ListBox x:Name="FoundedPersons" Grid.Column="2" Background="Transparent"></ListBox>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+            <Button>Cofnij</Button>
+            <Button>Dalej</Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
