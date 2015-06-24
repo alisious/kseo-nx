@@ -13,7 +13,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="1">
             <Button x:Name="CheckPerson"  Height="60">Sprawdzenia</Button>
-            <Button Height="60">Zabezpieczenia</Button>
+            <Button x:Name="NewProvision"  Height="60">Zabezpieczenia</Button>
             <Button Height="60">Współpraca</Button>
             <Button Height="60">Procedury</Button>
         </StackPanel>

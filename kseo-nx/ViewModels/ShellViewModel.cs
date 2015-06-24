@@ -29,6 +29,13 @@ namespace kseo_nx.ViewModels
             ActivateItem(ai);
         }
 
+        public void NewProvision()
+        {
+            DisplayName = "KSEO 2.0 - Nowe zabezpieczenie.";
+            var ai = new ProvisionWizardViewModel() { Parent = this };
+            ActivateItem(ai);
+        }
+
         public void CloseApplication()
         {
             this.TryClose();

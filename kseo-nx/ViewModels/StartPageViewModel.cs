@@ -20,5 +20,11 @@ namespace kseo_nx.ViewModels
             if (this.Parent!=null)
                 (this.Parent as ShellViewModel).ShowVerifications();
         }
+
+        public void NewProvision()
+        {
+            if (this.Parent != null)
+                (this.Parent as ShellViewModel).NewProvision();
+        }
     }
 }
