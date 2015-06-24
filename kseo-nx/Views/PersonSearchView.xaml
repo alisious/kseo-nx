@@ -7,34 +7,50 @@
              d:DesignHeight="800" d:DesignWidth="1600">
     <Grid>
           <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="100*"/>
+              <ColumnDefinition Width="80*"/>
               <ColumnDefinition Width="500"/>
-            <ColumnDefinition Width="500*"/>
-            </Grid.ColumnDefinitions>  
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="80*"/>
+        </Grid.ColumnDefinitions>  
         <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal"  Grid.Column="1" Grid.Row="0">
-            <StackPanel Width="250">
-            <Label>PESEL:</Label>
-                <Label>Nazwisko:</Label>
-                <Label>Imię:</Label>
-                <Label>Imię ojca:</Label>
-                <Label>Data urodzenia:</Label>
-            </StackPanel>
-        <StackPanel Width="250" >
-                <TextBox Name="Pesel" Margin="2"/>
-                <TextBox Name="Nazwisko" Margin="2"/>
-                <TextBox Name="Imie" Margin="2"/>
-                <TextBox Name="ImieOjca" Margin="2"/>
-                <TextBox Name="DataUrodzenia" Margin="2"/>
+        <TextBlock Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Background="Bisque" Text="Wyszukiwanie osoby ..." TextAlignment="Left" FontSize="16"></TextBlock>
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <Label Content="Parametry wyszukiwania:"/>
+            <CheckBox x:Name="CanSearchAutomatically" Content="wyszukiwanie automatyczne" IsThreeState="False"/>
+            <DockPanel>
+                <Label Width="150">PESEL:</Label><TextBox x:Name="Pesel" Margin="2"/>
+            </DockPanel>
+            <DockPanel>
+                <Label Width="150">Nazwisko:</Label><TextBox Name="FamilyName" Margin="2"/>
+            </DockPanel>
+            <DockPanel>
+                <Label Width="150">Imię:</Label><TextBox Name="FirstName" Margin="2"/>
+            </DockPanel>
+            <DockPanel>
+                <Label Width="150">Drugie imię:</Label><TextBox Name="MiddleName" Margin="2"/>
+            </DockPanel>
+            <DockPanel>
+                <Label Width="150">Data urodzenia:</Label>
+                <TextBox Name="DateOfBirth" Margin="2"/>
+            </DockPanel>
+            <DockPanel>
+                <Label Width="150">Imię ojca:</Label><TextBox Name="NameOfFather" Margin="2"/>
+            </DockPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="Search" Width="60" Height="40">Szukaj</Button>
             </StackPanel>
         </StackPanel>
-        <ListBox x:Name="FoundedPersons" Grid.Column="2" Background="Transparent"></ListBox>
-        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
-            <Button>Cofnij</Button>
-            <Button>Dalej</Button>
+        <StackPanel Grid.Column="2" Grid.Row="1">
+            <DockPanel>
+                <Label>Wyniki wyszukiwania:</Label>
+                <TextBlock x:Name="CounterResults"/>
+            </DockPanel>
+            <ListBox x:Name="FoundedPersons" Background="Transparent"></ListBox>
+            <CheckBox x:Name="CanComposeNewPerson" Content="dodaj nową osobę."/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -15,6 +15,10 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Button Name="BackToStartView">Powrót do strony głównej.</Button>
             <Button Name="CloseApplication">Zamknij</Button>
+            <Label>Operator:</Label>
+            <Label x:Name="UserName"/>
+            <Label>Data operacji:</Label>
+            <Label x:Name="DateOfOperations"/>
         </StackPanel>
         
         <ContentControl Grid.Row="1" Name="ActiveItem"/>

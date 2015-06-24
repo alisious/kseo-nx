@@ -13,6 +13,18 @@ namespace kseo_nx.ViewModels
         public ShellViewModel()
         {
            BackToStartView();
+           NotifyOfPropertyChange(()=>UserName);
+           NotifyOfPropertyChange(()=>DateOfOperations);
+        }
+
+        public string UserName
+        {
+            get { return Environment.UserName; }
+        }
+
+        public string DateOfOperations
+        {
+            get { return DateTime.Today.ToShortDateString(); }
         }
 
         public void BackToStartView()

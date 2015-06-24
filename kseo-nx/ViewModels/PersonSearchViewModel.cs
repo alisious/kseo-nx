@@ -11,7 +11,7 @@ namespace kseo_nx.ViewModels
 {
     public class PersonSearchViewModel:Screen
     {
-        private bool _canSearchFindAutomatically;
+        private bool _canSearchAutomatically;
         private int _peselLengthTrigger = 3;
         private int _familyNameTrigger = 3;
         private string _pesel;
@@ -23,15 +23,29 @@ namespace kseo_nx.ViewModels
         private int _counterResults = 0;
         private BindableCollection<FoundPerson> _items;
         private FoundPerson _selectedItem;
-        
-        public bool CanSearchFindAutomatically
+        private bool _canComposeNewPerson;
+
+
+        public PersonSearchViewModel()
         {
-            get { return _canSearchFindAutomatically; }
+            CanSearchAutomatically = true;
+            CanComposeNewPerson = false;
+        }
+
+        public bool CanSearchAutomatically
+        {
+            get { return _canSearchAutomatically; }
             set
             {
-                _canSearchFindAutomatically = value;
-                NotifyOfPropertyChange(()=>CanSearchFindAutomatically);
+                _canSearchAutomatically = value;
+                NotifyOfPropertyChange(()=>CanSearchAutomatically);
+                NotifyOfPropertyChange(()=>CanSearch);
             }
+        }
+
+        public bool CanSearch
+        {
+            get { return !CanSearchAutomatically; }
         }
 
         public string Pesel
@@ -87,14 +101,12 @@ namespace kseo_nx.ViewModels
             {
                 _selectedItem = value;
                 NotifyOfPropertyChange(()=>SelectedItem);
-                NotifyOfPropertyChange(() => CanSelect);
+                if (Parent != null)
+                    (Parent as ProvisionWizardViewModel).CanGoNext = _selectedItem != null;
             }
         }
 
-        public bool CanSelect
-        {
-            get { return SelectedItem!=null; }
-        }
+        
 
         public string FirstName
         {
@@ -148,7 +160,7 @@ namespace kseo_nx.ViewModels
 
         public void SearchAutomatically()
         {
-            if (!CanSearchFindAutomatically) return;
+            if (!CanSearchAutomatically) return;
             if ((Pesel.Length>=PeselLengthTrigger) || (FamilyName.Length>=FamilyNameTrigger))
                 Search();
         }
@@ -158,20 +170,22 @@ namespace kseo_nx.ViewModels
 
         }
 
-        public void Select()
+
+        public bool CanComposeNewPerson
         {
-            if (!CanSelect) return;
-            TryClose(true);
+            get { return _canComposeNewPerson; }
+            set
+            {
+                _canComposeNewPerson = value;
+                NotifyOfPropertyChange(()=>CanComposeNewPerson);
+                SelectedItem = _canComposeNewPerson ? ComposeNewPerson() : null;
+               
+            }
         }
 
-        public void Cancel()
+        private FoundPerson ComposeNewPerson()
         {
-            TryClose(false);
-        }
-
-        public void ComposeNewPerson()
-        {
-            SelectedItem = new FoundPerson()
+            return new FoundPerson()
             {   
                 Id = Guid.Empty, 
                 Pesel = Pesel,
@@ -181,8 +195,8 @@ namespace kseo_nx.ViewModels
                 MiddleName = MiddleName,
                 NameOfFather = NameOfFather
             };
-
-            TryClose(true);
         }
+
+        
     }
 }

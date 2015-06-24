@@ -78,6 +78,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\IAggregate.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Provision.cs" />
     <Compile Include="QueryModels\FoundPerson.cs" />
     <Compile Include="ViewModels\PersonSearchViewModel.cs" />
     <Compile Include="ViewModels\PersonViewModel.cs" />
@@ -88,6 +92,9 @@
     <Compile Include="ViewModels\ProvisionWizardViewModel.cs" />
     <Compile Include="Views\PersonSearchView.xaml.cs">
       <DependentUpon>PersonSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegistrationCardView.xaml.cs">
+      <DependentUpon>RegistrationCardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
@@ -114,6 +121,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\PersonSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RegistrationCardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -179,9 +190,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -10,6 +10,7 @@ namespace kseo_nx.ViewModels
     public class ProvisionWizardViewModel :Conductor<Screen>.Collection.OneActive
     {
         private int _activeItemIndex = 0;
+        private bool _canGoNext;
         
         public ProvisionWizardViewModel()
         {
@@ -28,6 +29,11 @@ namespace kseo_nx.ViewModels
         {
             get { return (_activeItemIndex < Items.Count - 1)
                             && ((Items[0] as PersonSearchViewModel).SelectedItem!=null); }
+            set
+            {
+                _canGoNext = value;
+                NotifyOfPropertyChange(()=>CanGoNext);
+            }
         }
 
         public bool CanGoPrevious
