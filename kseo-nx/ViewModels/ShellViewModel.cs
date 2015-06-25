@@ -44,7 +44,7 @@ namespace kseo_nx.ViewModels
         public void NewProvision()
         {
             DisplayName = "KSEO 2.0 - Nowe zabezpieczenie.";
-            var ai = new ProvisionWizardViewModel() { Parent = this };
+            var ai = new ReservationWizardViewModel() { Parent = this };
             ActivateItem(ai);
         }
 

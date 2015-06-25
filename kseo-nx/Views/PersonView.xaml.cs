@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace kseo_nx.Views
 {
     /// <summary>
-    /// Interaction logic for ProvisionWizardView.xaml
+    /// Interaction logic for PersonView.xaml
     /// </summary>
-    public partial class ProvisionWizardView : UserControl
+    public partial class PersonView : UserControl
     {
-        public ProvisionWizardView()
+        public PersonView()
         {
             InitializeComponent();
         }

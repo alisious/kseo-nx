@@ -8,8 +8,8 @@
     <Grid>
           <Grid.ColumnDefinitions>
               <ColumnDefinition Width="80*"/>
-              <ColumnDefinition Width="500"/>
-            <ColumnDefinition Width="500"/>
+              <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="600"/>
             <ColumnDefinition Width="80*"/>
         </Grid.ColumnDefinitions>  
         <Grid.RowDefinitions>
@@ -44,13 +44,59 @@
                 <Button x:Name="Search" Width="60" Height="40">Szukaj</Button>
             </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Column="2" Grid.Row="1">
-            <DockPanel>
+        <DockPanel Grid.Column="2" Grid.Row="1">
+            <DockPanel Dock="Top">
                 <Label>Wyniki wyszukiwania:</Label>
                 <TextBlock x:Name="CounterResults"/>
             </DockPanel>
-            <ListBox x:Name="FoundedPersons" Background="Transparent"></ListBox>
-            <CheckBox x:Name="CanComposeNewPerson" Content="dodaj nową osobę."/>
-        </StackPanel>
+            <CheckBox x:Name="CanComposeNewPerson" Content="dodaj nową osobę." DockPanel.Dock="Bottom"/>
+            <DataGrid x:Name="Items" Background="Transparent" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="PESEL" Width="SizeToCells" MinWidth="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Pesel}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Nazwisko" Width="SizeToCells" MinWidth="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding FamilyName}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Imię" Width="SizeToCells" MinWidth="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding FirstName}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Drugie imię" Width="SizeToCells" MinWidth="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding MiddleName}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Data ur." Width="SizeToCells" MinWidth="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding DateOfBirth}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Imię ojca" Width="SizeToCells" MinWidth="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding NameOfFather}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            
+        </DockPanel>
     </Grid>
 </UserControl>

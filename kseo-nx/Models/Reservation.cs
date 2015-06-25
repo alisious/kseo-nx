@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace kseo_nx.Models
 {
-    public class Provision :Entity
+    public class Reservation :Entity
     {
+
+        public string RegNum { get; set; }
+        
+
+
         public void Terminate(string endReason, string endDate, string registrationDate, string registeringUser)
         {
 

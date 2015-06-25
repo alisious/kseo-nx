@@ -7,12 +7,12 @@ using Caliburn.Micro;
 
 namespace kseo_nx.ViewModels
 {
-    public class ProvisionWizardViewModel :Conductor<Screen>.Collection.OneActive
+    public class ReservationWizardViewModel :Conductor<Screen>.Collection.OneActive
     {
         private int _activeItemIndex = 0;
         private bool _canGoNext;
         
-        public ProvisionWizardViewModel()
+        public ReservationWizardViewModel()
         {
             Items.Add(new PersonSearchViewModel());
             Items.Add(new RegistrationCardViewModel());
@@ -27,8 +27,7 @@ namespace kseo_nx.ViewModels
 
         public bool CanGoNext
         {
-            get { return (_activeItemIndex < Items.Count - 1)
-                            && ((Items[0] as PersonSearchViewModel).SelectedItem!=null); }
+            get { return (_activeItemIndex < Items.Count - 1) && (ActiveItem as IWizardScreen).CanGoNext(); }
             set
             {
                 _canGoNext = value;
@@ -66,6 +65,11 @@ namespace kseo_nx.ViewModels
         {
             //TODO Utrwalenie obiektu 
             TryClose(true);
+        }
+
+        public void CheckIfCanGoNext()
+        {
+            NotifyOfPropertyChange(() => CanGoNext);
         }
 
     }
