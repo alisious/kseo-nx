@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="kseo_nx.Views.ReservationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="182"/>
+            <RowDefinition Height="178"/>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="620"/>
+            <ColumnDefinition Width="620"/>
+            <ColumnDefinition Width="40*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="1" Background="LemonChiffon" Grid.ColumnSpan="2" FontSize="16">Zabezpieczenie...</Label>
+        <DockPanel Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" >
+            <Label DockPanel.Dock="Top" Foreground="Blue" >Dane podstawowe:</Label>
+            <StackPanel >
+                <DockPanel>
+                    <Label Width="150">Operator wprowadzający:</Label>
+                    <TextBox x:Name="RegistrationUserName" Margin="2" IsEnabled="False"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Data rejestracji:</Label>
+                    <TextBox Name="RegistrationDate" Margin="2" IsEnabled="False"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Numer:</Label>
+                    <TextBox Name="RegistrationNo" Margin="2" />
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Cel pozyskania:</Label>
+                    <TextBox x:Name="Purpose" Width="50" Margin="2"></TextBox>
+                    <ComboBox x:Name="PurposesComboBox" 
+                              ItemsSource="{Binding Purposes}" 
+                              SelectedValue="{Binding Purpose}"
+                              DisplayMemberPath="Description"
+                              SelectedValuePath="Name" 
+                              Margin="2"/>
+
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Data początkowa:</Label>
+                    <TextBox Name="StartDate" Margin="2" CharacterCasing="Upper"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Planowana data końcowa:</Label>
+                    <TextBox Name="PlannedEndDate" Margin="2" CharacterCasing="Upper"/>
+                </DockPanel>
+                <Label DockPanel.Dock="Top" >Dodatkowe informacje:</Label>
+                <TextBox x:Name="Notes" TextWrapping="Wrap" Height="150"></TextBox>
+            </StackPanel>
+        </DockPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            <ContentControl x:Name="ConductingUnits" VerticalAlignment="Stretch"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2">
+            <ContentControl x:Name="ConductingOfficers" VerticalAlignment="Stretch"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <CheckBox x:Name="IsEnded" Foreground="Blue">Informacje o zakończeniu.</CheckBox>
+            <ContentControl x:Name ="ReservationEnd" Visibility="{Binding ReservationEndVisibility}"></ContentControl>
+        </StackPanel>
+    </Grid>
+</UserControl>

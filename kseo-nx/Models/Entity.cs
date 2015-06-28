@@ -8,8 +8,8 @@ namespace kseo_nx.Models
 {
     public abstract class Entity
     {
-        public Guid Id { get; set; }
-        public DateTime CreationTime { get; set; }
-        public string Creator { get; set; }
+        public Guid Id { get; protected set; }
+        public DateTime CreationTime { get; protected set; }
+        public string Creator { get; protected set; }
     }
 }

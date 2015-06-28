@@ -17,6 +17,7 @@ namespace kseo_nx.ViewModels
             Items.Add(new PersonSearchViewModel());
             Items.Add(new RegistrationCardViewModel());
             Items.Add(new PersonViewModel());
+            Items.Add(new ReservationViewModel());
         }
 
         protected override void OnInitialize()
@@ -46,6 +47,7 @@ namespace kseo_nx.ViewModels
             ActivateItem(Items[++_activeItemIndex]);
             NotifyOfPropertyChange(()=>CanGoNext);
             NotifyOfPropertyChange(()=>CanGoPrevious);
+            NotifyOfPropertyChange(()=>CanFinish);
         }
 
         public void GoPrevious()
@@ -54,11 +56,17 @@ namespace kseo_nx.ViewModels
             ActivateItem(Items[--_activeItemIndex]);
             NotifyOfPropertyChange(() => CanGoNext);
             NotifyOfPropertyChange(() => CanGoPrevious);
+            NotifyOfPropertyChange(() => CanFinish);
         }
 
         public void Cancel()
         {
             TryClose(false);
+        }
+
+        public bool CanFinish
+        {
+            get { return (_activeItemIndex == Items.Count - 1); }
         }
 
         public void Finish()

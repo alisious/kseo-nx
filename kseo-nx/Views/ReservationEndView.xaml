@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="kseo_nx.Views.ReservationEndView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" MinWidth="500">
+    <StackPanel >
+        <DockPanel>
+            <Label Width="150">Operator wprowadzający:</Label>
+            <TextBox x:Name="EndRegistrationUserName" Margin="2" IsEnabled="False"/>
+        </DockPanel>
+        <DockPanel>
+            <Label Width="150">Data rejestracji:</Label>
+            <TextBox Name="EndRegistrationDate" Margin="2" IsEnabled="False"/>
+        </DockPanel>
+        <DockPanel>
+            <Label Width="150">Numer karty (EO/A):</Label>
+            <TextBox Name="EndRegistrationNo" Margin="2" />
+        </DockPanel>
+        <DockPanel>
+            <Label Width="150">Data zakończenia:</Label>
+            <TextBox Name="EndDate" Margin="2" CharacterCasing="Upper"/>
+        </DockPanel>
+        <DockPanel>
+            <Label Width="150">Przyczyna zakończenia:</Label>
+            <TextBox x:Name="EndReason" Width="50" Margin="2"></TextBox>
+            <ComboBox x:Name="EndReasonsComboBox" 
+                              ItemsSource="{Binding EndReasons}" 
+                              SelectedValue="{Binding EndReason}"
+                              DisplayMemberPath="Description"
+                              SelectedValuePath="Name" 
+                              Margin="2"/>
+
+        </DockPanel>
+        
+        <Label DockPanel.Dock="Top" >Dodatkowe informacje o zakończeniu:</Label>
+        <TextBox x:Name="EndNotes" TextWrapping="Wrap" Height="140"></TextBox>
+    </StackPanel>
+</UserControl>

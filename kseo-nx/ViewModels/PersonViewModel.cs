@@ -1,46 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Media.TextFormatting;
 using Caliburn.Micro;
+using kseo_nx.Helpers;
+using System.Dynamic;
+using System.Windows;
 
 namespace kseo_nx.ViewModels
 {
     public class PersonViewModel :Screen,IWizardScreen
     {
+        #region Fields
         private string _pesel = String.Empty;
         private string _firstName = String.Empty;
         private string _middleName = String.Empty;
         private string _familyName = String.Empty;
         private string _dateOfBirth = String.Empty;
         private string _nameOfFather = String.Empty;
-        private string _placeOfBirth= String.Empty;
-        private string _nameOfMother= String.Empty;
-        private string _motherMaidenName= String.Empty;
-        private string _sex= String.Empty;
-        private string _nationality= String.Empty;
-        private string _notes= String.Empty;
-        private BindableCollection<string> _citizenships = new BindableCollection<string>();
+        private string _placeOfBirth = String.Empty;
+        private string _nameOfMother = String.Empty;
+        private string _motherMaidenName = String.Empty;
+        private string _sex = String.Empty;
+        private string _nationality = String.Empty;
+        private string _notes = String.Empty;
+        private string _citizenships = String.Empty;
 
         private BindableCollection<String> _countryList;
-        private BindableCollection<String> _sexList; 
+        private BindableCollection<String> _sexList;
         
+        #endregion
+  
+
 
         public PersonViewModel()
         {
             CountryList = new BindableCollection<string>(Helpers.Database.Countries);
             SexList = new BindableCollection<string>(Helpers.Database.Sex);
+
+            PersonAddresses = new AddressesViewModel();
+            PersonWorkplaces = new PersonWorkplacesViewModel();
+
         }
 
+        #region Properties
         public string Pesel
         {
             get { return _pesel; }
             set
             {
                 _pesel = value;
-                NotifyOfPropertyChange(()=>Pesel);
+                NotifyOfPropertyChange(() => Pesel);
+                CheckIfCanGoNext();
             }
         }
 
@@ -152,20 +168,11 @@ namespace kseo_nx.ViewModels
                 _notes = value;
                 NotifyOfPropertyChange(() => Notes);
             }
-        }
+        } 
+        #endregion
 
-        public BindableCollection<string> Citizenships
-        {
-            get { return _citizenships; }
-            set
-            {
-                _citizenships = value;
-                NotifyOfPropertyChange(() => Citizenships);
-            }
-        }
-
-
-
+        
+        
 
         public BindableCollection<string> CountryList
         {
@@ -187,10 +194,66 @@ namespace kseo_nx.ViewModels
             }
         }
 
+        
+
 
         public bool CanGoNext()
         {
-            throw new NotImplementedException();
+            return true;
         }
+
+        public void CheckIfCanGoNext()
+        {
+            if (Parent != null)
+                (Parent as ReservationWizardViewModel).CheckIfCanGoNext();
+
+        }
+
+
+        #region Citizeships
+        public string Citizenships
+        {
+            get { return _citizenships; }
+            set
+            {
+                _citizenships = value;
+                NotifyOfPropertyChange(() => Citizenships);
+            }
+        }
+
+        public void OpenCitizenshipsDialog()
+        {
+            var windowManager = IoC.Get<IWindowManager>();
+            dynamic settings = new ExpandoObject();
+            settings.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            settings.WindowStyle = WindowStyle.ToolWindow;
+            var vm = new PersonCitizenshipsViewModel() { DisplayName = "Obywatelstwo..." };
+            vm.AllCountries.SelectFromLine(Citizenships);
+            windowManager.ShowDialog(vm, null, settings);
+            Citizenships = vm.AllCountries.GetSelectedInLine();
+
+        }
+        
+        #endregion
+        
+        //Miejsce pracy
+
+        public PersonWorkplacesViewModel PersonWorkplaces { get; protected set; }
+
+        //Adres
+
+        #region Addresses
+        
+        public AddressesViewModel PersonAddresses { get; protected set; }
+       
+        #endregion
+
+
+
     }
+
+
+
+
+
 }

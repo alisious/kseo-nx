@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="kseo_nx.Views.AddressView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Height="141" Width="360">
+    
+        <StackPanel VerticalAlignment="Stretch">
+            <CheckBox x:Name="IsValid">Aktualny</CheckBox>
+            <DockPanel>
+                <Label Width="100">Miejscowość:</Label>
+                <TextBox Name="City" Margin="2"/>
+            </DockPanel>
+            <DockPanel>
+                <Label Width="100">Ulica:</Label>
+                <TextBox Name="Street" Margin="2"/>
+            </DockPanel>
+            <DockPanel>
+                <Label Width="100">Numer:</Label>
+                <TextBox Name="StreetNo" Margin="2" Width="100"/>
+                <Label Content="/"/>
+                <TextBox Name="PlaceNo" Margin="2"/>
+            </DockPanel>
+            <DockPanel>
+                <Label Width="100">Kod pocztowy:</Label>
+                <TextBox Name="PostalCode" Margin="2"/>
+            </DockPanel>
+<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+    <Button x:Name="Remove" Width="60" Style="{StaticResource HyperLinkButtonStyle}" VerticalContentAlignment="Center">Usuń</Button>
+</StackPanel>
+        </StackPanel>
+    
+</UserControl>

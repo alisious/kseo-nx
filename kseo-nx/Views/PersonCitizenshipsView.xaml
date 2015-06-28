@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="kseo_nx.Views.PersonCitizenshipsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Height="800" Width="1000">
+    <Grid>
+        <DockPanel x:Name="CitizenshipsDialog">
+            <StackPanel Height="50" Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center">
+                <Button Width="100" x:Name="Close">Zamknij</Button>
+            </StackPanel>
+            <ListBox Name="AllCountries" 
+                    Background="LightCyan" 
+                    VerticalAlignment="Stretch"
+                    ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                     IsTextSearchEnabled="True"
+                     ItemsSource="{Binding AllCountries}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox Name="AvaliableCountry" Content="{Binding Item}" IsThreeState="False" IsChecked="{Binding Selected}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
+    </Grid>
+</UserControl>

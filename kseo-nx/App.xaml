@@ -8,6 +8,25 @@
                  <ResourceDictionary>
                      <local:AppBootstrapper x:Key="Bootstrapper"/>
                  </ResourceDictionary>
+                 <ResourceDictionary>
+                        <Style TargetType="TextBox">
+                            <Setter Property="CharacterCasing" Value="Upper"/>
+                        </Style>
+                        <Style x:Key="HyperLinkButtonStyle" TargetType="Button">
+                        <Setter Property="Focusable" Value="False" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <TextBlock>
+                    <Hyperlink>
+                        <Run Text="{TemplateBinding Content}" />
+                    </Hyperlink>
+                                    </TextBlock>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ResourceDictionary>
              </ResourceDictionary.MergedDictionaries>
          </ResourceDictionary>
     </Application.Resources>

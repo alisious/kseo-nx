@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using kseo_nx.Models;
 
 namespace kseo_nx.Helpers
 {
@@ -274,9 +275,55 @@ namespace kseo_nx.Helpers
         };
 
 
+
+        //Powód zabezpieczenia
+
+        private static DictItem[] _reservationPurposes =
+        {
+            new DictItem() {Id = 1, Name = "A", Description = "ROZPRACOWANIE"},
+            new DictItem() {Id = 2, Name = "AA", Description = "PRZED ZAINTERESOWANIEM OPERACYJNYM"},
+            new DictItem() {Id = 3, Name = "QA", Description = "POSTĘPOWANIE SPRAWDZAJĄCE"},
+            new DictItem() {Id = 4, Name = "QK", Description = "KONCESJA"},
+            new DictItem() {Id = 5, Name = "J", Description = "DOPUSZCZENIE DO INFORMACJI NIEJAWNYCH"},
+            new DictItem() {Id = 6, Name = "QC", Description = "RODZINA (KONKUBENT) OPINIOWANEGO W POST. SPRAW."},
+            new DictItem() {Id = 7, Name = "Q", Description = "OPINIOWANIE"},
+            new DictItem() {Id = 8, Name = "U", Description = "SPRAWDZENIE KANDYDATA DO ŻW"},
+            new DictItem() {Id = 9, Name = "AB", Description = "PRZED REJESTRACJĄ"},
+            new DictItem() {Id = 10, Name = "AC", Description = "PRZED ROZMOWĄ"},
+            new DictItem() {Id = 11, Name = "AD", Description = "PRZED ZASADZKĄ"},
+            new DictItem() {Id = 12, Name = "KU", Description = "KANDYDAT DO SŁUŻBY (PRACY)"},
+            new DictItem() {Id = 13, Name = "KW", Description = "RODZINA KANDYDATA DO SŁUŻBY (PRACY)"},
+            new DictItem() {Id = 14, Name = "KZ", Description = "RODZINA FUNKCJONARIUSZA (PRACOWNIKA)"},
+            new DictItem() {Id = 15, Name = "PA", Description = "PRZED (PO) ZATRZYMANIEM (-IU)"},
+            new DictItem() {Id = 16, Name = "PB", Description = "PRZED PRZESZUKANIEM"},
+            new DictItem() {Id = 17, Name = "PC", Description = "PRZED PRZESŁUCHANIEM"},
+            new DictItem() {Id = 18, Name = "PD", Description = "PRZED PRZEDSTAWIENIEM ZARZUTU"},
+            new DictItem() {Id = 19, Name = "PE", Description = "PRZED (PO) ZASTOSOWANIEM (IU) ŚRODKA ZAPOBIEGAWCZEGO"},
+            new DictItem() {Id = 20, Name = "PF", Description = "PRZED POSZUKIWANIEM"},
+            new DictItem() {Id = 21, Name = "QD", Description = "KONTAKT OPINIOWANEGO W POST. SPRAW."}
+        }; 
+
+
+        //Przyczyna zakończenia zabezpieczenia
+
+        private static DictItem[] _reservationEndReasons =
+        {
+            new DictItem() {Id = 1, Name = "A", Description = "UPŁYNIĘCIE TERMINU"},
+            new DictItem() {Id = 2, Name = "AA", Description = "NAWIĄZANIE WSPÓŁPRACY"},
+            new DictItem() {Id = 3, Name = "QA", Description = "INNE"},
+            new DictItem() {Id = 4, Name = "QK", Description = "KONCESJA"},
+            new DictItem() {Id = 5, Name = "J", Description = "DOPUSZCZENIE DO INFORMACJI NIEJAWNYCH"},
+            new DictItem() {Id = 6, Name = "QC", Description = "RODZINA (KONKUBENT) OPINIOWANEGO W POST. SPRAW."},
+            new DictItem() {Id = 7, Name = "Q", Description = "OPINIOWANIE"},
+            new DictItem() {Id = 8, Name = "U", Description = "SPRAWDZENIE KANDYDATA DO ŻW"}
+        };
+
+
         public static string[] OrganizationalUnits {get { return _organizationalUnits; }}
         public static string[] Countries { get { return _countries; } }
         public static string[] Sex { get { return _sex; } }
+        public static DictItem[] ReservationPurposes { get { return _reservationPurposes; } }
+        public static DictItem[] ReservationEndReasons { get { return _reservationEndReasons; } }
     }
     
 }

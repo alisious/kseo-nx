@@ -3,10 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:extras="clr-namespace:kseo_nx.Extras"
+             xmlns:micro="http://www.caliburnproject.org"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1200">
-    <Grid>
+    <UserControl.Resources>
+        <Style x:Key="HyperLinkButtonStyle" TargetType="Button">
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <TextBlock>
+                    <Hyperlink>
+                        <Run Text="{TemplateBinding Content}" />
+                    </Hyperlink>
+                        </TextBlock>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid HorizontalAlignment="Right" Width="1200">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="80*"/>
             <ColumnDefinition Width="400"/>
@@ -15,64 +31,87 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="337*"/>
+            <RowDefinition Height="93"/>
+            <RowDefinition Height="290*"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Background="Bisque" Text="Dane osoby ..." TextAlignment="Left" FontSize="16"></TextBlock>
-        <StackPanel Grid.Column="1" Grid.Row="1">
-            <DockPanel>
-            <Label Width="150">PESEL:</Label>
-            <TextBox x:Name="Pesel" Margin="2"/>
+        <DockPanel Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
+            <Label DockPanel.Dock="Top" Foreground="Blue" >Dane podstawowe:</Label>
+            <StackPanel >
+                <DockPanel>
+                    <Label Width="150">PESEL:</Label>
+                    <TextBox x:Name="Pesel" Margin="2"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Płeć:</Label>
+                    <ComboBox x:Name="SexList" SelectedItem="{Binding Sex}" Margin="2"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Nazwisko:</Label>
+                    <TextBox Name="FamilyName" Margin="2" CharacterCasing="Upper"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Imię:</Label>
+                    <TextBox Name="FirstName" Margin="2" CharacterCasing="Upper"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Drugie imię:</Label>
+                    <TextBox Name="MiddleName" Margin="2"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Nazwisko poprzednie:</Label>
+                    <TextBox Name="PreviousName" Margin="2"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Data urodzenia:</Label>
+                    <TextBox Name="DateOfBirth" Margin="2"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Miejsce urodzenia:</Label>
+                    <TextBox Name="PlaceOfBirth" Margin="2"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Imię ojca:</Label>
+                    <TextBox Name="NameOfFather" Margin="2"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Imię matki:</Label>
+                    <TextBox Name="NameOfmother" Margin="2"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Nazwisko rodowe matki:</Label>
+                    <TextBox Name="MotherMaidenName" Margin="2"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Narodowość:</Label>
+                    <ComboBox Name="CountryList" Margin="2" SelectedItem="{Binding Nationality}" IsTextSearchEnabled="True"/>
+                </DockPanel>
+                <DockPanel>
+                    <DockPanel  Dock="Top">
+                        <Label Width="150" >Obywatelstwo:</Label>
+                        <Button x:Name="OpenCitizenshipsDialog" Margin="2" Style="{StaticResource HyperLinkButtonStyle}" VerticalAlignment="Center">Wybierz...</Button>
+                    </DockPanel>
+                    <TextBox x:Name="Citizenships" Margin="2" Height="62" TextWrapping="Wrap" IsReadOnly="True"/>
+                </DockPanel>
+            </StackPanel>
         </DockPanel>
-            <DockPanel>
-                <Label Width="150">Płeć:</Label>
-                <ComboBox x:Name="SexList" SelectedItem="{Binding Sex}" Margin="2"/>
-            </DockPanel>
-            <DockPanel>
-            <Label Width="150">Nazwisko:</Label>
-            <TextBox Name="FamilyName" Margin="2"/>
-        </DockPanel>
-        <DockPanel>
-            <Label Width="150">Imię:</Label>
-            <TextBox Name="FirstName" Margin="2"/>
-        </DockPanel>
-        <DockPanel>
-            <Label Width="150">Drugie imię:</Label>
-            <TextBox Name="MiddleName" Margin="2"/>
-        </DockPanel>
-            <DockPanel>
-                <Label Width="150">Nazwisko poprzednie:</Label>
-                <TextBox Name="PreviousName" Margin="2"/>
-            </DockPanel>
-        <DockPanel>
-            <Label Width="150">Data urodzenia:</Label>
-            <TextBox Name="DateOfBirth" Margin="2"/>
-        </DockPanel>
-            <DockPanel>
-                <Label Width="150">Miejsce urodzenia:</Label>
-                <TextBox Name="PlaceOfBirth" Margin="2"/>
-            </DockPanel>
-        <DockPanel>
-            <Label Width="150">Imię ojca:</Label>
-            <TextBox Name="NameOfFather" Margin="2"/>
-        </DockPanel>
-            <DockPanel>
-                <Label Width="150">Imię matki:</Label>
-                <TextBox Name="NameOfmother" Margin="2"/>
-            </DockPanel>
-            <DockPanel>
-                <Label Width="150">Nazwisko rodowe matki:</Label>
-                <TextBox Name="MotherMaidenName" Margin="2"/>
-            </DockPanel>
-            <DockPanel>
-                <Label Width="150">Narodowość:</Label>
-                <ComboBox Name="CountryList" Margin="2" SelectedItem="{Binding Nationality}" IsTextSearchEnabled="True"/>
-            </DockPanel>
-            <DockPanel>
-                <Label Width="150">Obywatelstwo:</Label>
-                <ComboBox x:Name="CitizenList" ItemsSource="{Binding CountryList}" Margin="2"/>
-            </DockPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2" Grid.RowSpan="2">
+<ContentControl x:Name="PersonAddresses" VerticalAlignment="Stretch"/>
+        </StackPanel>
 
+
+        <DockPanel Grid.Row="3" Grid.Column="1" Margin="2">
+            
+            <Label DockPanel.Dock="Top" Foreground="Blue" >Dodatkowe informacje:</Label>
+            <TextBox x:Name="Notes" TextWrapping="Wrap"/>
+           
+        </DockPanel>
+
+        
+        <StackPanel Grid.Row="2" Grid.Column="2" Grid.RowSpan="2">
+            <ContentControl x:Name="PersonWorkplaces" VerticalAlignment="Stretch"/>
         </StackPanel>
     </Grid>
 </UserControl>

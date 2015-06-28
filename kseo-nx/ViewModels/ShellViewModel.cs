@@ -7,9 +7,10 @@ using Caliburn.Micro;
 
 namespace kseo_nx.ViewModels
 {
-    public class ShellViewModel :Conductor<Screen>.Collection.OneActive
+    
+    public class ShellViewModel :Conductor<Screen>.Collection.OneActive,IShell
     {
-
+        
         public ShellViewModel()
         {
            BackToStartView();

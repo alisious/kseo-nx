@@ -201,5 +201,7 @@ namespace kseo_nx.ViewModels
         {
             return (SelectedItem != null) || CanComposeNewPerson;
         }
+
+        
     }
 }
