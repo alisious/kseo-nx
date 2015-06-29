@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace kseo_nx.Models
 {
-    public class Workplace :Address
+    public class Workplace :Place
     {
         public string Name { get; set; }
         public string Position { get; set; }

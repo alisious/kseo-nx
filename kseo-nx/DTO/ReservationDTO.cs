@@ -17,7 +17,7 @@ namespace kseo_nx.DTO
         public string RegistrationCardNo { get; set; }
         public string Purpose { get; set; }
         public string StartDate { get; set; }
-        public string PlannedEndDate { get; set; };
+        public string PlannedEndDate { get; set; }
         public string Notes { get; set; }
         public string EndRegistrationUserName { get; set; }
         public string EndRegistrationDate { get; set; }

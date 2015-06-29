@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Caliburn.Micro;
+using kseo_nx.ApplicationServices;
+using kseo_nx.DTO;
 
 namespace kseo_nx.ViewModels
 {
@@ -72,6 +75,13 @@ namespace kseo_nx.ViewModels
         public void Finish()
         {
             //TODO Utrwalenie obiektu 
+
+            Mapper.CreateMap<PersonViewModel, PersonDTO>();
+            var pDTO = Mapper.Map<PersonDTO>((Items[2] as PersonViewModel));
+
+            var ofs = OperationalFileService.ReserveNewPerson(pDTO,new ReservationDTO());
+
+            //Zamknięcie formularza
             TryClose(true);
         }
 

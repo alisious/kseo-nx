@@ -112,6 +112,7 @@
     <Compile Include="Models\IAggregate.cs" />
     <Compile Include="Models\IKseoNxDataContext.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Place.cs" />
     <Compile Include="Models\Reservation.cs" />
     <Compile Include="Models\ValueObject.cs" />
     <Compile Include="Models\Workplace.cs" />

@@ -37,44 +37,34 @@ namespace kseo_nx.Models
             Reservations = new HashSet<Reservation>();
             Addresses = new HashSet<Address>();
             Workplaces = new List<Workplace>();
-        }
-
-        public Person(PersonDTO personData) 
-        {
-            Reservations = new HashSet<Reservation>();
-            Addresses = new HashSet<Address>();
-            Workplaces = new List<Workplace>();
-
-            Mapper.CreateMap<PersonDTO, Person>();
-            this = Mapper.Map<PersonDTO>(personData);
-            var p = personData;
-            Pesel = p.Pesel;
-            FamilyName = p.FamilyName;
-            FirstName = p.FirstName;
-            MiddleName = p.MiddleName;
-            PreviousName = p.PreviousName;
-            DateOfBirth = p.DateOfBirth;
-            PlaceOfBirth = p.PlaceOfBirth;
-
+            CreationTime = DateTime.Today;
+            Creator = Environment.UserName;
 
         }
 
+        
 
 
 
 
-        public Reservation Reserve(string registrationCardNo, string purpose, string startDate, string plannedEndDate,
-            string notes)
+
+        public Reservation Reserve(ReservationDTO reservationData)
         {
+            
             if (ReservationStatus == "ZAB") 
                 throw new InvalidOperationException("Próba zabezpieczenia zabezpieczonej osoby!");
 
-            return new Reservation(){Id=new Guid(),CreationTime = DateTime.Now,Creator = Environment.UserName,
-                RegistrationCardNo = registrationCardNo,
-                Purpose = purpose,
-                StartDate = startDate,
-                PlannedEndDate = plannedEndDate};
+            var newReservation = new Reservation();
+            Mapper.CreateMap<ReservationDTO, Reservation>();
+            Mapper.Map(reservationData, newReservation);
+            Reservations.Add(newReservation);
+            ReservationStatus = "ZAB";
+            return new Reservation();
+
         }
+
+
+
 
 
         public Address AddAddress(bool isValid,string city,string street,string streetNo,string placeNo,string postalCode)

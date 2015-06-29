@@ -10,7 +10,7 @@
         <CheckBox x:Name="IsValid">Aktualne</CheckBox>
         <DockPanel>
             <Label Width="100">Nazwa:</Label>
-            <TextBox Name="Name" Margin="2"/>
+            <TextBox x:Name="Name" Margin="2"/>
         </DockPanel>
         <DockPanel>
             <Label Width="100">Stanowisko:</Label>

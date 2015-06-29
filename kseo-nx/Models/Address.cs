@@ -6,15 +6,11 @@ using System.Threading.Tasks;
 
 namespace kseo_nx.Models
 {
-    public class Address :ValueObject
+    public class Address :Place
     {
 
             public bool IsValid { get; set; }
-            public string City { get; set; }
-            public string Street { get; set; }
-            public string StreetNo { get; set; }
-            public string PlaceNo { get; set; }
-            public string PostalCode { get; set; }
+            
             
 
             public override string ToString()

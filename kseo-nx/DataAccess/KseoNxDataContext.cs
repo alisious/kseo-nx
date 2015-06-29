@@ -25,6 +25,10 @@ namespace kseo_nx.DataAccess
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
+            modelBuilder.Entity<Workplace>().Map(m=>m.MapInheritedProperties()).ToTable("Workplaces");
+            modelBuilder.Entity<Address>().Map(m => m.MapInheritedProperties()).ToTable("Addresses");
+
+
             modelBuilder.Entity<Person>()
                 .HasMany(e => e.Addresses);
             
