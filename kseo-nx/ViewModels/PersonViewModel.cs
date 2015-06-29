@@ -17,6 +17,8 @@ namespace kseo_nx.ViewModels
     public class PersonViewModel :Screen,IWizardScreen
     {
         #region Fields
+        private string _creator = string.Empty;
+        private DateTime _creationTime;
         private string _pesel = String.Empty;
         private string _firstName = String.Empty;
         private string _middleName = String.Empty;
@@ -40,6 +42,9 @@ namespace kseo_nx.ViewModels
 
         public PersonViewModel()
         {
+            Creator = Environment.UserName;
+            CreationTime = DateTime.Today;
+            
             CountryList = new BindableCollection<string>(Helpers.Database.Countries);
             SexList = new BindableCollection<string>(Helpers.Database.Sex);
 
@@ -168,7 +173,29 @@ namespace kseo_nx.ViewModels
                 _notes = value;
                 NotifyOfPropertyChange(() => Notes);
             }
-        } 
+        }
+
+        public string Creator
+        {
+            get { return _creator; }
+            set
+            {
+                _creator = value;
+                NotifyOfPropertyChange(() => Creator);
+            }
+        }
+
+        public DateTime CreationTime
+        {
+            get { return _creationTime; }
+            set
+            {
+                _creationTime = value;
+                NotifyOfPropertyChange(() => CreationTime);
+            }
+        }
+
+
         #endregion
 
         
@@ -245,7 +272,8 @@ namespace kseo_nx.ViewModels
         #region Addresses
         
         public AddressesViewModel PersonAddresses { get; protected set; }
-       
+
+        
         #endregion
 
 

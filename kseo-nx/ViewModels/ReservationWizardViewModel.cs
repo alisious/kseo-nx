@@ -75,11 +75,17 @@ namespace kseo_nx.ViewModels
         public void Finish()
         {
             //TODO Utrwalenie obiektu 
+           
 
             Mapper.CreateMap<PersonViewModel, PersonDTO>();
             var pDTO = Mapper.Map<PersonDTO>((Items[2] as PersonViewModel));
 
-            var ofs = OperationalFileService.ReserveNewPerson(pDTO,new ReservationDTO());
+
+            
+            Mapper.CreateMap<ReservationViewModel, ReservationDTO>();
+            var rDTO = Mapper.Map<ReservationDTO>((Items[3] as ReservationViewModel));
+            rDTO.RegistrationCardNo = (Items[1] as RegistrationCardViewModel).RegNum;
+            var ofs = OperationalFileService.ReserveNewPerson(pDTO,rDTO);
 
             //Zamknięcie formularza
             TryClose(true);

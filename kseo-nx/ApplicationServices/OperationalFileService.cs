@@ -17,10 +17,7 @@ namespace kseo_nx.ApplicationServices
 
             using (var context = new KseoNxDataContext())
             {
-                var newPerson = new Person();
-
-                Mapper.CreateMap<PersonDTO, Person>();
-                Mapper.Map(personData, newPerson);
+                var newPerson = Person.Register(personData);
                 newPerson.Reserve(reservationData);
                 context.Persons.Add(newPerson);
                 context.SaveChanges();

@@ -22,6 +22,7 @@ namespace kseo_nx
             _container.Singleton<IMessageService, MessageService>();
             _container.Singleton<IEventAggregator, EventAggregator>();
             _container.PerRequest<IShell, ShellViewModel>();
+            
 
         }
 

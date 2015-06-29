@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper.Impl;
 using kseo_nx.Models;
 
 namespace kseo_nx.Helpers
 {
     public static class Database
     {
+        //Status osoby
+        public const string cZabezpieczona = "ZAB";
+        public const string cWspolpracownik = "WSP";
+        public const string cFigurant = "FIG";
+        public const string cBezRoli = "BEZ";
+
+ 
+        
         static string[] _organizationalUnits =
         {
           "Oddział Kryminalny KGŻW", "MOŻW Warszawa", "OŻW Kraków", "OŻW Elbląg", "OŻW Żagań"

@@ -12,8 +12,6 @@ namespace kseo_nx.DTO
         public Guid Id { get; set; }
         public DateTime CreationTime { get; set; }
         public string Creator { get; set; }
-        public string RegistrationUserName { get; set; }
-        public string RegistrationDate { get; set; }
         public string RegistrationCardNo { get; set; }
         public string Purpose { get; set; }
         public string StartDate { get; set; }

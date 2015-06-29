@@ -25,11 +25,11 @@
             <StackPanel >
                 <DockPanel>
                     <Label Width="150">Operator wprowadzający:</Label>
-                    <TextBox x:Name="RegistrationUserName" Margin="2" IsEnabled="False"/>
+                    <TextBox x:Name="Creator" Margin="2" IsEnabled="False"/>
                 </DockPanel>
                 <DockPanel>
                     <Label Width="150">Data rejestracji:</Label>
-                    <TextBox Name="RegistrationDate" Margin="2" IsEnabled="False"/>
+                    <TextBox Name="CreationTime" Margin="2" IsEnabled="False" Text="{Binding Path=CreationTime, StringFormat=yyyy-MM-dd}" />
                 </DockPanel>
                 <DockPanel>
                     <Label Width="150">Numer:</Label>

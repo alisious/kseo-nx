@@ -15,8 +15,9 @@ namespace kseo_nx.ViewModels
     {
 
         #region Fields
-        private string _registrationUserName = string.Empty;
-        private string _registrationDate = string.Empty;
+        private string _creator = string.Empty;
+        private DateTime _creationTime;
+        private string _registrationCardNo = string.Empty;
         private string _registrationNo;
         private string _purpose = string.Empty;
         private string _startDate;
@@ -32,23 +33,23 @@ namespace kseo_nx.ViewModels
         #endregion
 
         #region Public properties
-        public string RegistrationUserName
+        public string Creator
         {
-            get { return _registrationUserName; }
+            get { return _creator; }
             set
             {
-                _registrationUserName = value;
-                NotifyOfPropertyChange(() => RegistrationUserName);
+                _creator = value;
+                NotifyOfPropertyChange(() => Creator);
             }
         }
 
-        public string RegistrationDate
+        public DateTime CreationTime
         {
-            get { return _registrationDate; }
+            get { return _creationTime; }
             set
             {
-                _registrationDate = value;
-                NotifyOfPropertyChange(() => RegistrationDate);
+                _creationTime = value;
+                NotifyOfPropertyChange(() => CreationTime);
             }
         }
         
@@ -155,12 +156,22 @@ namespace kseo_nx.ViewModels
             }
         }
 
+        public string RegistrationCardNo
+        {
+            get { return _registrationCardNo; }
+            set
+            {
+                _registrationCardNo = value;
+                NotifyOfPropertyChange(() => RegistrationCardNo);
+            }
+        }
+
         #endregion
 
         public ReservationViewModel()
         {
-            RegistrationUserName = Environment.UserName;
-            RegistrationDate = DateTime.Today.ToShortDateString();
+            Creator = Environment.UserName;
+            CreationTime = DateTime.Today;
             IsEnded = false;
             ReservationEnd = new ReservationEndViewModel();
             ConductingUnits = new ConductingUnitsViewModel();

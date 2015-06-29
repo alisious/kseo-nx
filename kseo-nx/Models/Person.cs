@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using kseo_nx.DTO;
@@ -26,46 +28,22 @@ namespace kseo_nx.Models
         public string Nationality { get; set; }
         public string Citizenships { get; set; }
         public string Notes { get; set; }
-        public string ReservationStatus { get; set; }
+        public string RegistrationStatus { get; set; }
 
         public HashSet<Reservation> Reservations { get; protected set; }
         public HashSet<Address> Addresses { get; protected set; }
         public List<Workplace> Workplaces { get; protected set; }
         
-        public Person()
+        protected Person()
         {
             Reservations = new HashSet<Reservation>();
             Addresses = new HashSet<Address>();
             Workplaces = new List<Workplace>();
-            CreationTime = DateTime.Today;
-            Creator = Environment.UserName;
+            RegistrationStatus = Helpers.Database.cBezRoli;
 
         }
 
         
-
-
-
-
-
-        public Reservation Reserve(ReservationDTO reservationData)
-        {
-            
-            if (ReservationStatus == "ZAB") 
-                throw new InvalidOperationException("Próba zabezpieczenia zabezpieczonej osoby!");
-
-            var newReservation = new Reservation();
-            Mapper.CreateMap<ReservationDTO, Reservation>();
-            Mapper.Map(reservationData, newReservation);
-            Reservations.Add(newReservation);
-            ReservationStatus = "ZAB";
-            return new Reservation();
-
-        }
-
-
-
-
 
         public Address AddAddress(bool isValid,string city,string street,string streetNo,string placeNo,string postalCode)
         {
@@ -99,5 +77,27 @@ namespace kseo_nx.Models
 
 
 
+        public Reservation Reserve(ReservationDTO reservationData)
+        {
+
+            if (RegistrationStatus != Helpers.Database.cBezRoli)
+                throw new InvalidOperationException(String.Format("{0}, {1}", "Niedozowlona próba zabezpieczenia osoby!", RegistrationStatus));
+
+            var newReservation = Reservation.Register(reservationData);
+            Reservations.Add(newReservation);
+            RegistrationStatus = Helpers.Database.cZabezpieczona;
+            return newReservation;
+
+        }
+
+        public static Person Register(PersonDTO newPersonData)
+        {
+            Mapper.CreateMap<PersonDTO,Person>();
+            var p = Mapper.Map<Person>(newPersonData);
+            p.Id = Guid.NewGuid();
+            p.CreationTime = DateTime.Now;
+            p.Creator = Environment.UserName;
+            return p;
+        }
     }
 }

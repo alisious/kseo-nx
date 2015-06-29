@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
+using kseo_nx.DTO;
 
 namespace kseo_nx.Models
 {
     public class Reservation :Entity
     {
 
-        public string RegistrationUserName { get; set; }
-        public string RegistrationDate { get; set; }
         public string RegistrationCardNo { get; set; }
         public string Purpose { get; set; }
         public string StartDate { get; set; }
@@ -25,14 +25,33 @@ namespace kseo_nx.Models
         
         public void Finish(string endReason, string endDate, string endNotes, string endRegistrationCardNo)
         {
+            throw new NotImplementedException();
+        }
+
+        protected Reservation()
+        {
+            CreationTime = DateTime.Today;
+            Creator = Environment.UserName;
+        }
+
+        public static Reservation Register(ReservationDTO reservationData)
+        {
+            Mapper.CreateMap<ReservationDTO, Reservation>();
+            var r = Mapper.Map<Reservation>(reservationData);
+            r.CreationTime = DateTime.Now;
+            r.Id = Guid.NewGuid();
+            return r;
+        }
+
+        public bool Update(ReservationDTO reservationData)
+        {
+            //porównanie pól obiektu
+            //zapisanie różnic do logu 
+            throw new NotImplementedException();
 
         }
 
-        
 
 
-  
-
-  
     }
 }
