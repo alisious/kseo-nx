@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Diagnostics.Eventing.Reader;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Diagnostics.Contracts;
 using AutoMapper;
 using kseo_nx.DTO;
 
@@ -14,21 +9,21 @@ namespace kseo_nx.Models
 {
     public class Person :Entity,IAggregate
     {
-        public string Pesel { get; set; }
-        public string FamilyName { get; set; }
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string PreviousName { get; set; }
-        public string DateOfBirth { get; set; }
-        public string PlaceOfBirth { get; set; }
-        public string NameOfFather { get; set; }
-        public string NameOfMother { get; set; }
-        public string MotherMaidenName { get; set; }
-        public string Sex { get; set; }
-        public string Nationality { get; set; }
-        public string Citizenships { get; set; }
-        public string Notes { get; set; }
-        public string RegistrationStatus { get; set; }
+        public string Pesel { get; protected set; }
+        public string FamilyName { get; protected set; }
+        public string FirstName { get; protected set; }
+        public string MiddleName { get; protected set; }
+        public string PreviousName { get; protected set; }
+        public string DateOfBirth { get; protected set; }
+        public string PlaceOfBirth { get; protected set; }
+        public string NameOfFather { get; protected set; }
+        public string NameOfMother { get; protected set; }
+        public string MotherMaidenName { get; protected set; }
+        public string Sex { get; protected set; }
+        public string Nationality { get; protected set; }
+        public string Citizenships { get; protected set; }
+        public string Notes { get; protected set; }
+        public string RegistrationStatus { get; protected set; }
 
         public HashSet<Reservation> Reservations { get; protected set; }
         public HashSet<Address> Addresses { get; protected set; }
@@ -40,7 +35,6 @@ namespace kseo_nx.Models
             Addresses = new HashSet<Address>();
             Workplaces = new List<Workplace>();
             RegistrationStatus = Helpers.Database.cBezRoli;
-
         }
 
         
@@ -90,8 +84,15 @@ namespace kseo_nx.Models
 
         }
 
+       
+
+
         public static Person Register(PersonDTO newPersonData)
         {
+             
+            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(newPersonData.FamilyName),"Nie można zarejestrować osoby bez podania nazwiska.");
+            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(newPersonData.FirstName), "Nie można zarejestrować osoby bez podania imienia.");
+            Contract.Requires<ArgumentException>((!String.IsNullOrWhiteSpace(newPersonData.Pesel)||!String.IsNullOrWhiteSpace(newPersonData.NameOfFather)), "Nie można zarejestrować osoby bez podania imienia ojca jeśli nie podano PESEL i odwrotnie.");
             Mapper.CreateMap<PersonDTO,Person>();
             var p = Mapper.Map<Person>(newPersonData);
             p.Id = Guid.NewGuid();

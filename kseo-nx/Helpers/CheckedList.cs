@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,6 +62,7 @@ namespace kseo_nx.Helpers
 
         public void SelectFromLine(string itemsInLine)
         {
+            Contract.Requires(itemsInLine!=null);
             var l = itemsInLine.Replace(", ",",").Split(',').ToList();
             foreach (var i in l.SelectMany(s => this.Where(i => i.Item.ToString() == s)))
             {
@@ -70,6 +72,7 @@ namespace kseo_nx.Helpers
 
         public void Unselect(T[] items)
         {
+            Contract.Requires(items!=null);
             foreach (var i in items)
             {
                 Unselect(i);
