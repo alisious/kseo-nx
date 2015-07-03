@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using AutoMapper;
 using kseo_nx.DTO;
 
@@ -87,12 +86,20 @@ namespace kseo_nx.Models
        
 
 
-        public static Person Register(PersonDTO newPersonData)
+        public static Person CreateInEO(PersonDTO newPersonData)
         {
              
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(newPersonData.FamilyName),"Nie można zarejestrować osoby bez podania nazwiska.");
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(newPersonData.FirstName), "Nie można zarejestrować osoby bez podania imienia.");
-            Contract.Requires<ArgumentException>((!String.IsNullOrWhiteSpace(newPersonData.Pesel)||!String.IsNullOrWhiteSpace(newPersonData.NameOfFather)), "Nie można zarejestrować osoby bez podania imienia ojca jeśli nie podano PESEL i odwrotnie.");
+            
+            if (String.IsNullOrWhiteSpace(newPersonData.FamilyName)) throw new ArgumentException("Nie można utworzyć osoby bez nazwiska.");
+            if (String.IsNullOrWhiteSpace(newPersonData.FirstName)) throw new ArgumentException( "Nie można utworzyć osoby bez imienia.");
+            if (String.IsNullOrWhiteSpace(newPersonData.Pesel))
+            {
+                if (String.IsNullOrWhiteSpace(newPersonData.NameOfFather)) throw new ArgumentException("Nie można utworzyć osoby bez imienia ojca jeśli nie podano numeru PESEL.");
+                if (String.IsNullOrWhiteSpace(newPersonData.DateOfBirth)) throw new ArgumentException("Nie można utworzyć osoby bez daty urodzenia jeśli nie podano numeru PESEL.");
+            }
+            
+
+            
             Mapper.CreateMap<PersonDTO,Person>();
             var p = Mapper.Map<Person>(newPersonData);
             p.Id = Guid.NewGuid();

@@ -17,7 +17,7 @@ namespace kseo_nx.ApplicationServices
 
             using (var context = new KseoNxDataContext())
             {
-                var newPerson = Person.Register(personData);
+                var newPerson = Person.CreateInEO(personData);
                 newPerson.Reserve(reservationData);
                 context.Persons.Add(newPerson);
                 context.SaveChanges();
