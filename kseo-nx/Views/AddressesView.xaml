@@ -13,7 +13,7 @@
         </StackPanel>
 
 
-        <ListView x:Name="Items" >
+        <ListView x:Name="Items" MaxHeight="400">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>

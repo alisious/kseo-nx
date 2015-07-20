@@ -158,6 +158,9 @@
     <Compile Include="Models\IKseoNxDataContext.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Place.cs" />
+    <Compile Include="Models\Request.cs" />
+    <Compile Include="Models\RequestState.cs" />
+    <Compile Include="Models\RequestType.cs" />
     <Compile Include="Models\Reservation.cs" />
     <Compile Include="Models\ValueObject.cs" />
     <Compile Include="Models\Workplace.cs" />
@@ -175,6 +178,7 @@
     <Compile Include="ViewModels\PersonWorkplacesViewModel.cs" />
     <Compile Include="ViewModels\PersonWorkplaceViewModel.cs" />
     <Compile Include="ViewModels\RegistrationCardViewModel.cs" />
+    <Compile Include="ViewModels\RequestViewModel.cs" />
     <Compile Include="ViewModels\ReservationEndViewModel.cs" />
     <Compile Include="ViewModels\ReservationViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
@@ -216,6 +220,9 @@
     </Compile>
     <Compile Include="Views\RegistrationCardView.xaml.cs">
       <DependentUpon>RegistrationCardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RequestView.xaml.cs">
+      <DependentUpon>RequestView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ReservationEndView.xaml.cs">
       <DependentUpon>ReservationEndView.xaml</DependentUpon>
@@ -292,6 +299,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RegistrationCardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RequestView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

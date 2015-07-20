@@ -226,7 +226,7 @@ namespace kseo_nx.ViewModels
 
         public bool CanGoNext()
         {
-            return true;
+          return (PersonAddresses.Count>0);
         }
 
         public void CheckIfCanGoNext()

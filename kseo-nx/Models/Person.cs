@@ -38,11 +38,11 @@ namespace kseo_nx.Models
 
         
 
-        public Address AddAddress(bool isValid,string city,string street,string streetNo,string placeNo,string postalCode)
+        public Address AddAddress(bool isCurrent,string city,string street,string streetNo,string placeNo,string postalCode)
         {
             var a = new Address()
             {
-                IsValid = isValid,
+                IsCurrent = isCurrent,
                 City = city,
                 Street = street,
                 StreetNo = streetNo,
@@ -53,11 +53,11 @@ namespace kseo_nx.Models
             return r ? a : null;
         }
 
-        public Address UpdateAddress(bool isValid, string city, string street, string streetNo, string placeNo, string postalCode)
+        public Address UpdateAddress(bool isCurrent, string city, string street, string streetNo, string placeNo, string postalCode)
         {
             var a = new Address()
             {
-                IsValid = isValid,
+                IsCurrent = isCurrent,
                 City = city,
                 Street = street,
                 StreetNo = streetNo,

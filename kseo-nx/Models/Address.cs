@@ -9,7 +9,7 @@ namespace kseo_nx.Models
     public class Address :Place
     {
 
-            public bool IsValid { get; set; }
+            public bool IsCurrent { get; set; }
             
             
 

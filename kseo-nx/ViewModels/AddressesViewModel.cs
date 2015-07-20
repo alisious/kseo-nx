@@ -10,7 +10,9 @@ namespace kseo_nx.ViewModels
 {
     public class AddressesViewModel :Conductor<AddressViewModel>.Collection.AllActive
     {
-        
+
+        public int Count { get { return Items.Count; } }
+
         public void AddAddress()
         {
             Items.Add(new AddressViewModel(){Parent = this});

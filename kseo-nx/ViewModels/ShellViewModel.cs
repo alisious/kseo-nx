@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
+using kseo_nx.Models;
 
 namespace kseo_nx.ViewModels
 {
@@ -48,6 +49,14 @@ namespace kseo_nx.ViewModels
             var ai = new ReservationWizardViewModel() { Parent = this };
             ActivateItem(ai);
         }
+
+        public void NewPerson()
+        {
+            DisplayName = "KSEO 2.0 - Nowa osoba.";
+            var ai = new RequestViewModel(UserName,RequestType.Create) { Parent = this };
+            ActivateItem(ai);
+        }
+
 
         public void CloseApplication()
         {

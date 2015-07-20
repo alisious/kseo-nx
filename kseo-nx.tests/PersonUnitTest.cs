@@ -117,7 +117,7 @@ namespace kseo_nx.tests
         {
             //Given
             var p = Person.CreateInEO(_personDto);
-            p.AddAddress()
+           
             //When
             
             //Then

@@ -10,6 +10,6 @@ namespace kseo_nx.ViewModels
     public interface IWizardScreen
     {
         bool CanGoNext();
-        //bool IsValid { get; set; }
+        //bool IsCurrent { get; set; }
     }
 }
