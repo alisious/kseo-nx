@@ -4,7 +4,7 @@ using AutoMapper;
 using kseo_nx.DTO;
 
 
-namespace kseo_nx.Models
+namespace kseo_nx.Domain
 {
     public class Person :Entity,IAggregate
     {

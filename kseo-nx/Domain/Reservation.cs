@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using kseo_nx.DTO;
 
-namespace kseo_nx.Models
+namespace kseo_nx.Domain
 {
     public class Reservation :Entity
     {

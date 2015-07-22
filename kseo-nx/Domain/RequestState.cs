@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace kseo_nx.Models
+namespace kseo_nx.Domain
 {
-    public interface IAggregate
+    public enum RequestState
     {
-
+        Draft,
+        Confirmed,
+        Rejected
     }
 }

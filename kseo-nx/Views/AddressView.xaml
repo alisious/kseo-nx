@@ -7,7 +7,7 @@
              Height="141" Width="360">
     
         <StackPanel VerticalAlignment="Stretch">
-            <CheckBox x:Name="IsValid">Aktualny</CheckBox>
+            <CheckBox x:Name="IsCurrent">Aktualny</CheckBox>
             <DockPanel>
                 <Label Width="100">Miejscowość:</Label>
                 <TextBox Name="City" Margin="2"/>

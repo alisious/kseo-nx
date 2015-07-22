@@ -6,12 +6,22 @@ using System.Threading.Tasks;
 using AutoMapper;
 using kseo_nx.DataAccess;
 using kseo_nx.DTO;
-using kseo_nx.Models;
+using kseo_nx.Domain;
 
 namespace kseo_nx.ApplicationServices
 {
     public class OperationalFileService
     {
+
+        public Request<Person> CreatePerson(string creator,PersonDTO personDto)
+        {
+            var p = Person.CreateInEO(personDto);
+            var pr = new Request<Person>(creator, RequestType.Create, p);
+            //return pr.Execute(ctx);
+            return null;
+
+        }
+
         public static bool ReserveNewPerson(PersonDTO personData,ReservationDTO reservationData)
         {
 

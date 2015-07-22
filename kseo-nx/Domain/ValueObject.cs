@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kseo_nx.Models
+namespace kseo_nx.Domain
 {
-    public interface IKseoNxDataContext
+    public abstract class ValueObject 
     {
+        public int Id { get; set; }
 
+        
     }
 }

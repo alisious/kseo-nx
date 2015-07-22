@@ -9,7 +9,7 @@ namespace kseo_nx.ViewModels
 {
     public class AddressViewModel :Screen
     {
-        private bool _isValid;
+        private bool _isCurrent;
         private string _city;
         private string _street;
         private string _streetNo;
@@ -18,13 +18,13 @@ namespace kseo_nx.ViewModels
 
 
         #region Public properties
-        public bool IsValid
+        public bool IsCurrent
         {
-            get { return _isValid; }
+            get { return _isCurrent; }
             set
             {
-                _isValid = value;
-                NotifyOfPropertyChange(() => IsValid);
+                _isCurrent = value;
+                NotifyOfPropertyChange(() => IsCurrent);
             }
         }
 

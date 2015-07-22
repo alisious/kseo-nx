@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using kseo_nx.Models;
+using kseo_nx.Domain;
 
 namespace kseo_nx.DataAccess
 {
@@ -21,10 +21,13 @@ namespace kseo_nx.DataAccess
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<Workplace> Workplaces { get; set; }
         public virtual DbSet<Reservation> Reservations { get; set; }
+        public virtual DbSet<Request<Person>> PersonRequests { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
+            modelBuilder.Entity<Request<Person>>().ToTable("PersonRequests");
+           
             modelBuilder.Entity<Workplace>().Map(m=>m.MapInheritedProperties()).ToTable("Workplaces");
             modelBuilder.Entity<Address>().Map(m => m.MapInheritedProperties()).ToTable("Addresses");
 

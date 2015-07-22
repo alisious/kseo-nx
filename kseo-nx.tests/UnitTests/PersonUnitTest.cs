@@ -1,9 +1,9 @@
 ﻿using System;
 using kseo_nx.DTO;
-using kseo_nx.Models;
+using kseo_nx.Domain;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace kseo_nx.tests
+namespace kseo_nx.tests.UnitTests
 {
     [TestClass]
     public class PersonUnitTest
@@ -27,6 +27,20 @@ namespace kseo_nx.tests
             };
         }
 
+        [TestMethod]
+        public void osobie_można_przypisać_adres()
+        {
+            //Given
+            _personDto.FamilyName = String.Empty;
+            //When
+            var p = Person.CreateInEO(_personDto);
+
+            //Then
+            Assert.IsNull(p);
+
+        }
+        
+        
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void nie_można_utworzyć_osoby_bez_nazwiska()

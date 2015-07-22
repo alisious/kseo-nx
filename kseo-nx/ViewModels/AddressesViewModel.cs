@@ -15,7 +15,7 @@ namespace kseo_nx.ViewModels
 
         public void AddAddress()
         {
-            Items.Add(new AddressViewModel(){Parent = this});
+            Items.Insert(0,new AddressViewModel(){Parent = this,IsCurrent = true});
         }
 
         public void RemoveAddress(AddressViewModel removedAddress)

@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
-using kseo_nx.Models;
+using kseo_nx.DataAccess;
+using kseo_nx.Domain;
 
 namespace kseo_nx.ViewModels
 {
@@ -90,6 +91,15 @@ namespace kseo_nx.ViewModels
         public void Execute()
         {
             CreationTime = DateTime.Now;
+            using (var ctx = new KseoNxDataContext())
+            {
+                var r = new Request<Person>(Author, RequestType, null);
+                ctx.PersonRequests.Add(r);
+                ctx.SaveChanges();
+            }
+            
+            
+
         }
 
         public void Cancel()
