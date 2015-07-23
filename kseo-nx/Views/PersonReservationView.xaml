@@ -7,11 +7,15 @@
              Height="361" Width="1000">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="332*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="600"/>
             <ColumnDefinition Width="400*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel VerticalAlignment="Stretch" Grid.Column="0">
+        <StackPanel VerticalAlignment="Stretch" Grid.Column="0" Grid.RowSpan="2">
             <StackPanel >
                 <DockPanel>
                     <Label Width="150">Operator wprowadzający:</Label>
@@ -23,7 +27,7 @@
                 </DockPanel>
                 <DockPanel>
                     <Label Width="150">Numer EO-1:</Label>
-                    <TextBox Name="RegistrationNo" Margin="2" />
+                    <TextBox Name="RegistrationCardNo" Margin="2" />
                 </DockPanel>
                 <DockPanel>
                     <Label Width="150">Cel pozyskania:</Label>
@@ -47,48 +51,50 @@
                 <Label DockPanel.Dock="Top" >Dodatkowe informacje:</Label>
                 <TextBox x:Name="Notes" TextWrapping="Wrap" Height="150"></TextBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="Remove" Width="60" Style="{StaticResource HyperLinkButtonStyle}" VerticalContentAlignment="Center">Usuń</Button>
-            </StackPanel>
+
         </StackPanel>
-        <StackPanel Grid.Column="1" >
+        <StackPanel Grid.Column="1" Grid.RowSpan="2" >
             <DockPanel Height="26">
                 <CheckBox x:Name="IsTerminated" Foreground="Blue" VerticalAlignment="Center">Zabezpieczenie zakończone.</CheckBox>
             </DockPanel>
             <StackPanel  Visibility="{Binding ReservationEndVisibility}">
-            
-            <DockPanel>
-                <Label Width="150">Operator wprowadzający:</Label>
-                <TextBox x:Name="EndRegistrationUserName" Margin="2" IsEnabled="False" />
-            </DockPanel>
-            <DockPanel>
-                <Label Width="150">Data rejestracji:</Label>
-                <TextBox Name="EndRegistrationDate" Margin="2" IsEnabled="False"/>
-            </DockPanel>
-            <DockPanel>
-                <Label Width="150">Numer EO/A:</Label>
-                <TextBox Name="EndRegistrationNo" Margin="2" />
-            </DockPanel>
-            <DockPanel>
-                <Label Width="150">Data zakończenia:</Label>
-                <TextBox Name="EndDate" Margin="2" CharacterCasing="Upper"/>
-            </DockPanel>
-            <DockPanel>
-                <Label Width="150">Przyczyna zakończenia:</Label>
-                <TextBox x:Name="EndReason" Width="50" Margin="2"></TextBox>
-                <ComboBox x:Name="EndReasonsComboBox" 
+
+                <DockPanel>
+                    <Label Width="150">Operator wprowadzający:</Label>
+                    <TextBox x:Name="EndRegistrationUserName" Margin="2" IsEnabled="False" />
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Data rejestracji:</Label>
+                    <TextBox Name="EndRegistrationDate" Margin="2" IsEnabled="False"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Numer EO/A:</Label>
+                    <TextBox Name="EndRegistrationNo" Margin="2" />
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Data zakończenia:</Label>
+                    <TextBox Name="EndDate" Margin="2" CharacterCasing="Upper"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Przyczyna zakończenia:</Label>
+                    <TextBox x:Name="EndReason" Width="50" Margin="2"></TextBox>
+                    <ComboBox x:Name="EndReasonsComboBox" 
                               ItemsSource="{Binding EndReasons}" 
                               SelectedValue="{Binding EndReason}"
                               DisplayMemberPath="Description"
                               SelectedValuePath="Name" 
                               Margin="2"/>
 
-            </DockPanel>
+                </DockPanel>
 
-            <Label DockPanel.Dock="Top" >Dodatkowe informacje o zakończeniu:</Label>
-            <TextBox x:Name="EndNotes" TextWrapping="Wrap" Height="140"></TextBox>
-        </StackPanel>
+                <Label DockPanel.Dock="Top" >Dodatkowe informacje o zakończeniu:</Label>
+                <TextBox x:Name="EndNotes" TextWrapping="Wrap" Height="140"></TextBox>
             </StackPanel>
+            
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" >
+            <Button x:Name="Remove" Width="177" Style="{StaticResource HyperLinkButtonStyle}" VerticalContentAlignment="Center">Usuń powyższe zabezpieczenie</Button>
+        </StackPanel>
     </Grid>
 </UserControl>
 

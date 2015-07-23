@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 
 
@@ -42,6 +43,9 @@ namespace kseo_nx.Model
 
         public Reservation AddReservation()
         {
+            if (Reservations.Any(x=>x.ReservationState.Equals(ReservationState.Active)))
+                throw new InvalidOperationException("Osoba jest zabezpieczona!");
+
             var r = new Reservation {Id = Guid.NewGuid(), ReservationState = ReservationState.Active};
             return Reservations.Add(r) ? r : null;
         }

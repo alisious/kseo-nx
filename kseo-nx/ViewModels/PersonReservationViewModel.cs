@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -76,10 +77,7 @@ namespace kseo_nx.ViewModels
             }
         }
 
-
-
-       
-
+        
         public string StartDate
         {
             get { return CurrentReservation.StartDate; }
@@ -112,12 +110,7 @@ namespace kseo_nx.ViewModels
 
         public string ReservationEndVisibility
         {
-            get { return _reservationEndVisibility; }
-            set
-            {
-                _reservationEndVisibility = value;
-                NotifyOfPropertyChange(() => ReservationEndVisibility);
-            }
+            get { return IsTerminated ? "Visible" : "Collapsed"; }
         }
 
         public bool IsTerminated
@@ -128,14 +121,15 @@ namespace kseo_nx.ViewModels
                 if (value == true)
                 {
                     CurrentReservation.ReservationState = ReservationState.Terminated;
-                    ReservationEndVisibility = "Visible";
+                   
                 }
                 else
                 {
                     CurrentReservation.ReservationState = ReservationState.Active;
-                    ReservationEndVisibility = "Collapsed";
+                   
                 }
                 NotifyOfPropertyChange(() => IsTerminated);
+                NotifyOfPropertyChange(()=>ReservationEndVisibility);
             }
         }
 
