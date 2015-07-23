@@ -9,7 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using kseo_nx.DataAccess;
 
-namespace kseo_nx.Domain
+namespace kseo_nx.Model
 {
     public class Request<T> :Entity where T :Entity
     {

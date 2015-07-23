@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media.TextFormatting;
 using Caliburn.Micro;
+using kseo_nx.DataAccess;
+using kseo_nx.Model;
 using kseo_nx.Helpers;
 using System.Dynamic;
 using System.Windows;
@@ -17,6 +19,8 @@ namespace kseo_nx.ViewModels
     public class PersonViewModel :Screen,IWizardScreen
     {
         #region Fields
+
+        
         private string _creator = string.Empty;
         private DateTime _creationTime;
         private string _pesel = String.Empty;
@@ -37,7 +41,9 @@ namespace kseo_nx.ViewModels
         private BindableCollection<String> _sexList;
         
         #endregion
-  
+
+        
+
 
 
         public PersonViewModel()

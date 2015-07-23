@@ -4,98 +4,102 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
+using kseo_nx.Model;
 
 namespace kseo_nx.ViewModels
 {
     public class PersonWorkplaceViewModel :Screen
     {
-        private bool _isValid;
-        private string _name;
-        private string _position;
-        private string _city;
-        private string _street;
-        private string _streetNo;
-        private string _placeNo;
-        private string _postalCode;
+      
 
+        public PersonWorkplaceViewModel()
+        {
+        }
+
+        public PersonWorkplaceViewModel(Workplace currentWorkplace)
+        {
+            CurrentWorkplace = currentWorkplace;
+        }
+
+        public Workplace CurrentWorkplace { get; set; }
 
         #region Public properties
-        public bool IsValid
+        public bool IsCurrent
         {
-            get { return _isValid; }
+            get { return CurrentWorkplace.IsCurrent; }
             set
             {
-                _isValid = value;
-                NotifyOfPropertyChange(() => IsValid);
+                CurrentWorkplace.IsCurrent = value;
+                NotifyOfPropertyChange(() => IsCurrent);
             }
         }
 
         public string City
         {
-            get { return _city; }
+            get { return CurrentWorkplace.City; }
             set
             {
-                _city = value;
+                CurrentWorkplace.City = value;
                 NotifyOfPropertyChange(() => City);
             }
         }
 
         public string Street
         {
-            get { return _street; }
+            get { return CurrentWorkplace.Street; }
             set
             {
-                _street = value;
+                CurrentWorkplace.Street = value;
                 NotifyOfPropertyChange(() => Street);
             }
         }
 
         public string StreetNo
         {
-            get { return _streetNo; }
+            get { return CurrentWorkplace.StreetNo; }
             set
             {
-                _streetNo = value;
+                CurrentWorkplace.StreetNo = value;
                 NotifyOfPropertyChange(() => StreetNo);
             }
         }
 
         public string PlaceNo
         {
-            get { return _placeNo; }
+            get { return CurrentWorkplace.PlaceNo; }
             set
             {
-                _placeNo = value;
+                CurrentWorkplace.PlaceNo = value;
                 NotifyOfPropertyChange(() => PlaceNo);
             }
         }
 
         public string PostalCode
         {
-            get { return _postalCode; }
+            get { return CurrentWorkplace.PostalCode; }
             set
             {
-                _postalCode = value;
+                CurrentWorkplace.PostalCode = value;
                 NotifyOfPropertyChange(() => PostalCode);
             }
         }
 
         public string Name
         {
-            get { return _name; }
+            get { return CurrentWorkplace.Name; }
             set
             {
-                _name = value;
+                CurrentWorkplace.Name = value;
                 NotifyOfPropertyChange(() => Name);
             }
         }
 
         public string Position
         {
-            get { return _position; }
+            get { return CurrentWorkplace.Position; }
             set
             {
-                _position = value;
+                CurrentWorkplace.Position = value;
                 NotifyOfPropertyChange(() => Position);
             }
         }

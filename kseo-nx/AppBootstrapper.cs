@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Caliburn.Micro;
+using Caliburn.Micro.ExposedProperties;
 using kseo_nx.ViewModels;
 using Caliburn.Micro.Extras;
 
@@ -12,6 +13,7 @@ namespace kseo_nx
 
         public AppBootstrapper()
         {
+            
             Initialize();
         }
 

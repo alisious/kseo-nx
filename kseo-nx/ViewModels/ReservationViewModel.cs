@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using kseo_nx.Helpers;
-using kseo_nx.Domain;
+using kseo_nx.Model;
 
 namespace kseo_nx.ViewModels
 {

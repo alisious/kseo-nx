@@ -17,7 +17,7 @@
             <Button Height="60">Współpraca</Button>
             <Button Height="60">Procedury</Button>
             <Button x:Name="NewPerson" Height="60">Nowa osoba</Button>
-
+            <Button x:Name="EditPersonFile" Height="60">Kartoteka osoby</Button>
         </StackPanel>
     </Grid>
     

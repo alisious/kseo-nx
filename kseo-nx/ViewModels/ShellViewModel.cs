@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
-using kseo_nx.Domain;
+using kseo_nx.Model;
 
 namespace kseo_nx.ViewModels
 {
@@ -54,6 +54,13 @@ namespace kseo_nx.ViewModels
         {
             DisplayName = "KSEO 2.0 - Nowa osoba.";
             var ai = new RequestViewModel(UserName,RequestType.Create) { Parent = this };
+            ActivateItem(ai);
+        }
+
+        public void EditPersonFile()
+        {
+            DisplayName = "KSEO 2.0 - Kartoteka osoby.";
+            var ai = new PersonFileViewModel(Guid.Parse("e48c73a7-4dd9-4e78-9612-39f944d4d833")) { Parent = this };
             ActivateItem(ai);
         }
 

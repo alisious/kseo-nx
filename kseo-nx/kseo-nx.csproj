@@ -103,6 +103,9 @@
     <Reference Include="Caliburn.Micro">
       <HintPath>..\packages\Caliburn.Micro.Core.2.0.1\lib\net45\Caliburn.Micro.dll</HintPath>
     </Reference>
+    <Reference Include="Caliburn.Micro.ExposedProperties">
+      <HintPath>..\packages\Caliburn.Micro.ExposedProperties.1.0.0\lib\net40\Caliburn.Micro.ExposedProperties.dll</HintPath>
+    </Reference>
     <Reference Include="Caliburn.Micro.Extras">
       <HintPath>..\packages\Caliburn.Micro.Extras.2.0.0\lib\net45\Caliburn.Micro.Extras.dll</HintPath>
     </Reference>
@@ -142,29 +145,26 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
-    <Compile Include="ApplicationServices\OperationalFileService.cs" />
     <Compile Include="DataAccess\KseoNxDataContext.cs" />
     <Compile Include="DataAccess\KseoNxDataContextInitializer.cs" />
-    <Compile Include="Domain\IRequest.cs" />
-    <Compile Include="DTO\PersonDTO.cs" />
-    <Compile Include="DTO\ReservationDTO.cs" />
+    <Compile Include="Model\IRequest.cs" />
     <Compile Include="Helpers\CheckedList.cs" />
     <Compile Include="Helpers\CheckedListItem.cs" />
     <Compile Include="Helpers\Database.cs" />
     <Compile Include="IShell.cs" />
-    <Compile Include="Domain\Address.cs" />
-    <Compile Include="Domain\DictItem.cs" />
-    <Compile Include="Domain\Entity.cs" />
-    <Compile Include="Domain\IAggregate.cs" />
-    <Compile Include="Domain\IKseoNxDataContext.cs" />
-    <Compile Include="Domain\Person.cs" />
-    <Compile Include="Domain\Place.cs" />
-    <Compile Include="Domain\Request.cs" />
-    <Compile Include="Domain\RequestState.cs" />
-    <Compile Include="Domain\RequestType.cs" />
-    <Compile Include="Domain\Reservation.cs" />
-    <Compile Include="Domain\ValueObject.cs" />
-    <Compile Include="Domain\Workplace.cs" />
+    <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\DictItem.cs" />
+    <Compile Include="Model\Entity.cs" />
+    <Compile Include="Model\IAggregate.cs" />
+    <Compile Include="Model\IKseoNxDataContext.cs" />
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\Place.cs" />
+    <Compile Include="Model\Request.cs" />
+    <Compile Include="Model\RequestState.cs" />
+    <Compile Include="Model\RequestType.cs" />
+    <Compile Include="Model\Reservation.cs" />
+    <Compile Include="Model\ValueObject.cs" />
+    <Compile Include="Model\Workplace.cs" />
     <Compile Include="QueryModels\FoundPerson.cs" />
     <Compile Include="ViewModels\AddressesViewModel.cs" />
     <Compile Include="ViewModels\AddressViewModel.cs" />
@@ -172,8 +172,13 @@
     <Compile Include="ViewModels\ConductingOfficerViewModel.cs" />
     <Compile Include="ViewModels\ConductingUnitsViewModel.cs" />
     <Compile Include="ViewModels\ConductingUnitViewModel.cs" />
+    <Compile Include="ViewModels\ContextEditor.cs" />
     <Compile Include="ViewModels\IWizardScreen.cs" />
     <Compile Include="ViewModels\PersonCitizenshipsViewModel.cs" />
+    <Compile Include="ViewModels\PersonEditViewModel.cs" />
+    <Compile Include="ViewModels\PersonFileViewModel.cs" />
+    <Compile Include="ViewModels\PersonReservationsViewModel.cs" />
+    <Compile Include="ViewModels\PersonReservationViewModel.cs" />
     <Compile Include="ViewModels\PersonSearchViewModel.cs" />
     <Compile Include="ViewModels\PersonViewModel.cs" />
     <Compile Include="ViewModels\PersonWorkplacesViewModel.cs" />
@@ -206,6 +211,18 @@
     </Compile>
     <Compile Include="Views\PersonCitizenshipsView.xaml.cs">
       <DependentUpon>PersonCitizenshipsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PersonEditView.xaml.cs">
+      <DependentUpon>PersonEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PersonFileView.xaml.cs">
+      <DependentUpon>PersonFileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PersonReservationsView.xaml.cs">
+      <DependentUpon>PersonReservationsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PersonReservationView.xaml.cs">
+      <DependentUpon>PersonReservationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PersonSearchView.xaml.cs">
       <DependentUpon>PersonSearchView.xaml</DependentUpon>
@@ -280,6 +297,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PersonCitizenshipsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PersonEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PersonFileView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PersonReservationsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PersonReservationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

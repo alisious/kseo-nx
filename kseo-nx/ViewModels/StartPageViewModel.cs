@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,5 +33,18 @@ namespace kseo_nx.ViewModels
             if (this.Parent != null)
                 (this.Parent as ShellViewModel).NewPerson();
         }
+
+        public void EditPersonFile()
+        {
+            var windowManager = IoC.Get<IWindowManager>();
+            dynamic settings = new ExpandoObject();
+            settings.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            settings.WindowStyle = WindowStyle.ToolWindow;
+            settings.WindowsState = WindowState.Maximized;
+            var vm = new PersonFileViewModel(Guid.Parse("ffce04cd-5ec3-426a-aeb4-15a4aa0620a5")) { DisplayName = "Kartoteka osoby." };
+            windowManager.ShowDialog(vm, null, settings);
+            
+        }
+
     }
 }

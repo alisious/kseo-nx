@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper.Impl;
-using kseo_nx.Domain;
+using kseo_nx.Model;
 
 namespace kseo_nx.Helpers
 {

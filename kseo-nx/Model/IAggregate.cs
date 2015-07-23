@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kseo_nx.Domain
+namespace kseo_nx.Model
 {
-    public interface IKseoNxDataContext
+    public interface IAggregate
     {
 
     }

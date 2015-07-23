@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 
-namespace kseo_nx.DTO
+
+namespace kseo_nx.Model
 {
-    public class ReservationDTO
+    public class Reservation :Entity
     {
-        
-        public Guid Id { get; set; }
-        public DateTime CreationTime { get; set; }
-        public string Creator { get; set; }
+
         public string RegistrationCardNo { get; set; }
         public string Purpose { get; set; }
         public string StartDate { get; set; }
@@ -23,5 +22,22 @@ namespace kseo_nx.DTO
         public string EndDate { get; set; }
         public string EndReason { get; set; }
         public string EndNotes { get; set; }
+        
+        public void Finish(string endReason, string endDate, string endNotes, string endRegistrationCardNo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Reservation()
+        {
+            CreationTime = DateTime.Today;
+            Creator = Environment.UserName;
+        }
+
+       
+
+       
+
+
     }
 }

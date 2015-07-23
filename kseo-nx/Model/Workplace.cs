@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kseo_nx.Domain
+namespace kseo_nx.Model
 {
     public class Workplace :Place
     {
+        public bool IsCurrent { get; set; }
         public string Name { get; set; }
         public string Position { get; set; }
 

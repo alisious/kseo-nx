@@ -4,76 +4,84 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
+using kseo_nx.Model;
 
 namespace kseo_nx.ViewModels
 {
     public class AddressViewModel :Screen
     {
-        private bool _isCurrent;
-        private string _city;
-        private string _street;
-        private string _streetNo;
-        private string _placeNo;
-        private string _postalCode;
+       
+        public Address CurrentAddress { get; set; }
+
+        public AddressViewModel()
+        {
+
+        }
+
+        public AddressViewModel(Address address)
+        {
+            CurrentAddress = address;
+        }
+
 
 
         #region Public properties
         public bool IsCurrent
         {
-            get { return _isCurrent; }
+            get { return CurrentAddress.IsCurrent; }
             set
             {
-                _isCurrent = value;
+                CurrentAddress.IsCurrent = value;
                 NotifyOfPropertyChange(() => IsCurrent);
             }
         }
 
         public string City
         {
-            get { return _city; }
+            get { return CurrentAddress.City; }
             set
             {
-                _city = value;
+                CurrentAddress.City = value;
                 NotifyOfPropertyChange(() => City);
             }
         }
 
         public string Street
         {
-            get { return _street; }
+            get { return CurrentAddress.Street; }
             set
             {
-                _street = value;
+                CurrentAddress.Street = value;
                 NotifyOfPropertyChange(() => Street);
             }
         }
 
         public string StreetNo
         {
-            get { return _streetNo; }
+            get { return CurrentAddress.StreetNo; }
             set
             {
-                _streetNo = value;
+                CurrentAddress.StreetNo = value;
                 NotifyOfPropertyChange(() => StreetNo);
             }
         }
 
         public string PlaceNo
         {
-            get { return _placeNo; }
+            get { return CurrentAddress.PlaceNo; }
             set
             {
-                _placeNo = value;
+                CurrentAddress.PlaceNo = value;
                 NotifyOfPropertyChange(() => PlaceNo);
             }
         }
 
         public string PostalCode
         {
-            get { return _postalCode; }
+            get { return CurrentAddress.PostalCode; }
             set
             {
-                _postalCode = value;
+                CurrentAddress.PostalCode = value;
                 NotifyOfPropertyChange(() => PostalCode);
             }
         } 

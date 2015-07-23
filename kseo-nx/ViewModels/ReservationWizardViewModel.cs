@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Caliburn.Micro;
-using kseo_nx.ApplicationServices;
-using kseo_nx.DTO;
+
+
 
 namespace kseo_nx.ViewModels
 {
@@ -77,15 +77,7 @@ namespace kseo_nx.ViewModels
             //TODO Utrwalenie obiektu 
            
 
-            Mapper.CreateMap<PersonViewModel, PersonDTO>();
-            var pDTO = Mapper.Map<PersonDTO>((Items[2] as PersonViewModel));
-
-
             
-            Mapper.CreateMap<ReservationViewModel, ReservationDTO>();
-            var rDTO = Mapper.Map<ReservationDTO>((Items[3] as ReservationViewModel));
-            rDTO.RegistrationCardNo = (Items[1] as RegistrationCardViewModel).RegNum;
-            var ofs = OperationalFileService.ReserveNewPerson(pDTO,rDTO);
 
             //Zamknięcie formularza
             TryClose(true);

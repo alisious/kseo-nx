@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kseo_nx.Domain
+namespace kseo_nx.Model
 {
     public abstract class Entity
     {
-        public Guid Id { get; protected set; }
+        public Guid Id { get; set; }
         public DateTime CreationTime { get; protected set; }
         public string Creator { get; protected set; }
     }
