@@ -11,6 +11,8 @@ namespace kseo_nx.Model
     public class Reservation :Entity
     {
 
+        private ReservationState _reservationState = ReservationState.Active;
+
         public string RegistrationCardNo { get; set; }
         public string Purpose { get; set; }
         public string StartDate { get; set; }
@@ -22,12 +24,15 @@ namespace kseo_nx.Model
         public string EndDate { get; set; }
         public string EndReason { get; set; }
         public string EndNotes { get; set; }
-        
-        public void Finish(string endReason, string endDate, string endNotes, string endRegistrationCardNo)
+
+        public ReservationState ReservationState
         {
-            throw new NotImplementedException();
+            get { return _reservationState; }
+            set { _reservationState = value; }
         }
 
+
+        
         public Reservation()
         {
             CreationTime = DateTime.Today;

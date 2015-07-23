@@ -42,30 +42,12 @@ namespace kseo_nx.Model
 
         public Reservation AddReservation()
         {
-            var r = new Reservation();
-            r.Id = Guid.NewGuid();
-            if (Reservations.Add(r))
-                return r;
-            return null;
+            var r = new Reservation {Id = Guid.NewGuid(), ReservationState = ReservationState.Active};
+            return Reservations.Add(r) ? r : null;
         }
 
 
         public Address AddAddress(bool isCurrent,string city,string street,string streetNo,string placeNo,string postalCode)
-        {
-            var a = new Address()
-            {
-                IsCurrent = isCurrent,
-                City = city,
-                Street = street,
-                StreetNo = streetNo,
-                PlaceNo = placeNo,
-                PostalCode = postalCode
-            };
-            var r = Addresses.Add(a);
-            return r ? a : null;
-        }
-
-        public Address UpdateAddress(bool isCurrent, string city, string street, string streetNo, string placeNo, string postalCode)
         {
             var a = new Address()
             {

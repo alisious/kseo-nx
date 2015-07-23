@@ -147,13 +147,13 @@
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="DataAccess\KseoNxDataContext.cs" />
     <Compile Include="DataAccess\KseoNxDataContextInitializer.cs" />
-    <Compile Include="Model\IRequest.cs" />
     <Compile Include="Helpers\CheckedList.cs" />
     <Compile Include="Helpers\CheckedListItem.cs" />
     <Compile Include="Helpers\Database.cs" />
     <Compile Include="IShell.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\DictItem.cs" />
+    <Compile Include="Model\DomainObjectState.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\IAggregate.cs" />
     <Compile Include="Model\IKseoNxDataContext.cs" />
@@ -163,6 +163,7 @@
     <Compile Include="Model\RequestState.cs" />
     <Compile Include="Model\RequestType.cs" />
     <Compile Include="Model\Reservation.cs" />
+    <Compile Include="Model\ReservationState.cs" />
     <Compile Include="Model\ValueObject.cs" />
     <Compile Include="Model\Workplace.cs" />
     <Compile Include="QueryModels\FoundPerson.cs" />
@@ -383,6 +384,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Model\ModelClassDiagram.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

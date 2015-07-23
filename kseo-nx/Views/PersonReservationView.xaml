@@ -4,13 +4,91 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             Height="141" Width="360">
+             Height="361" Width="1000">
 
-    <StackPanel VerticalAlignment="Stretch">
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button x:Name="Remove" Width="60" Style="{StaticResource HyperLinkButtonStyle}" VerticalContentAlignment="Center">Usuń</Button>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="600"/>
+            <ColumnDefinition Width="400*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel VerticalAlignment="Stretch" Grid.Column="0">
+            <StackPanel >
+                <DockPanel>
+                    <Label Width="150">Operator wprowadzający:</Label>
+                    <TextBox x:Name="Creator" Margin="2" IsEnabled="False"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Data rejestracji:</Label>
+                    <TextBox Name="CreationTime" Margin="2" IsEnabled="False" Text="{Binding Path=CreationTime, StringFormat=yyyy-MM-dd}" />
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Numer EO-1:</Label>
+                    <TextBox Name="RegistrationNo" Margin="2" />
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Cel pozyskania:</Label>
+                    <TextBox x:Name="Purpose" Width="50" Margin="2"></TextBox>
+                    <ComboBox x:Name="PurposesComboBox" 
+                              ItemsSource="{Binding Purposes}" 
+                              SelectedValue="{Binding Purpose}"
+                              DisplayMemberPath="Description"
+                              SelectedValuePath="Name" 
+                              Margin="2"/>
+
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Data początkowa:</Label>
+                    <TextBox Name="StartDate" Margin="2" CharacterCasing="Upper"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Width="150">Planowana data końcowa:</Label>
+                    <TextBox Name="PlannedEndDate" Margin="2" CharacterCasing="Upper"/>
+                </DockPanel>
+                <Label DockPanel.Dock="Top" >Dodatkowe informacje:</Label>
+                <TextBox x:Name="Notes" TextWrapping="Wrap" Height="150"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="Remove" Width="60" Style="{StaticResource HyperLinkButtonStyle}" VerticalContentAlignment="Center">Usuń</Button>
+            </StackPanel>
         </StackPanel>
-    </StackPanel>
+        <StackPanel Grid.Column="1" >
+            <DockPanel Height="26">
+                <CheckBox x:Name="IsTerminated" Foreground="Blue" VerticalAlignment="Center">Zabezpieczenie zakończone.</CheckBox>
+            </DockPanel>
+            <StackPanel  Visibility="{Binding ReservationEndVisibility}">
+            
+            <DockPanel>
+                <Label Width="150">Operator wprowadzający:</Label>
+                <TextBox x:Name="EndRegistrationUserName" Margin="2" IsEnabled="False" />
+            </DockPanel>
+            <DockPanel>
+                <Label Width="150">Data rejestracji:</Label>
+                <TextBox Name="EndRegistrationDate" Margin="2" IsEnabled="False"/>
+            </DockPanel>
+            <DockPanel>
+                <Label Width="150">Numer EO/A:</Label>
+                <TextBox Name="EndRegistrationNo" Margin="2" />
+            </DockPanel>
+            <DockPanel>
+                <Label Width="150">Data zakończenia:</Label>
+                <TextBox Name="EndDate" Margin="2" CharacterCasing="Upper"/>
+            </DockPanel>
+            <DockPanel>
+                <Label Width="150">Przyczyna zakończenia:</Label>
+                <TextBox x:Name="EndReason" Width="50" Margin="2"></TextBox>
+                <ComboBox x:Name="EndReasonsComboBox" 
+                              ItemsSource="{Binding EndReasons}" 
+                              SelectedValue="{Binding EndReason}"
+                              DisplayMemberPath="Description"
+                              SelectedValuePath="Name" 
+                              Margin="2"/>
 
+            </DockPanel>
+
+            <Label DockPanel.Dock="Top" >Dodatkowe informacje o zakończeniu:</Label>
+            <TextBox x:Name="EndNotes" TextWrapping="Wrap" Height="140"></TextBox>
+        </StackPanel>
+            </StackPanel>
+    </Grid>
 </UserControl>
 
