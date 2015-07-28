@@ -26,8 +26,7 @@ namespace kseo_nx.ViewModels
 
         public void AddReservation()
         {
-            var reservation = new Reservation();
-            CurrentPerson.Reservations.Add(reservation);
+            var reservation = CurrentPerson.AddReservation();
             Items.Add(new PersonReservationViewModel(Context,reservation) { Parent = this });
         }
 

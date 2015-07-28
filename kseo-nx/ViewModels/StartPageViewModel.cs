@@ -41,7 +41,7 @@ namespace kseo_nx.ViewModels
             settings.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             settings.WindowStyle = WindowStyle.ToolWindow;
             settings.WindowsState = WindowState.Maximized;
-            var vm = new PersonFileViewModel(Guid.Parse("ffce04cd-5ec3-426a-aeb4-15a4aa0620a5")) { DisplayName = "Kartoteka osoby." };
+            var vm = new PersonFileViewModel(Guid.Empty) { DisplayName = "Kartoteka osoby." };
             windowManager.ShowDialog(vm, null, settings);
             
         }
