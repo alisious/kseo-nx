@@ -86,6 +86,16 @@ namespace kseo_nx.ViewModels
             }
         }
 
+        public string Sex
+        {
+            get { return CurrentPerson.Sex; }
+            set
+            {
+                CurrentPerson.Sex = value;
+                NotifyOfPropertyChange(() => Sex);
+            }
+        }
+        
         public string FirstName 
         {
             get { return CurrentPerson.FirstName; }
@@ -113,6 +123,17 @@ namespace kseo_nx.ViewModels
             {
                 CurrentPerson.MiddleName = value;
                 NotifyOfPropertyChange(() => MiddleName);
+            }
+        }
+
+
+        public string Nationality
+        {
+            get { return CurrentPerson.Nationality; }
+            set
+            {
+                CurrentPerson.Nationality = value;
+                NotifyOfPropertyChange(() => Nationality);
             }
         }
 

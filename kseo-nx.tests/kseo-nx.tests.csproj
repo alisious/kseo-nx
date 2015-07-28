@@ -57,6 +57,7 @@
     <Compile Include="UnitTests\PersonUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTests\PersonViewModelUnitTest.cs" />
+    <Compile Include="UnitTests\ReservationUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\kseo-nx\kseo-nx.csproj">
